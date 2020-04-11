@@ -1,9 +1,5 @@
 package com.example.login;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,20 +10,26 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 
-public class register_student extends AsyncTask<String, Void, String> {
+import android.content.Context;
+import android.os.AsyncTask;
+import android.app.AlertDialog;
+
+import java.net.URLEncoder;
+import java.net.URL;
+
+public class Register_Student extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
 
-    register_student(Context ctx) {
-        context = ctx;
+    Register_Student(Context ctx) {
+        this.context = ctx;
     }
 
     @Override
-    protected String dolnBackground(String... params) {
+    protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://192.168.43.111/register.php";
+        String login_url = "http://192.168.43.214/register.php";
         if (type.equals("login")) {
             try {
                 String register_number = params[1];
@@ -39,9 +41,10 @@ public class register_student extends AsyncTask<String, Void, String> {
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
+//                httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("register_number", "UTF-8") + "=" + URLEncoder.encode(register_number, "UTF-8") + "&"
+                String post_data = URLEncoder.encode("register_name", "UTF-8") + "=" + URLEncoder.encode(register_number, "UTF-8") + "&"
                         + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&"
                         + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
                         + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
@@ -50,30 +53,42 @@ public class register_student extends AsyncTask<String, Void, String> {
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                String result = "" ' ;
-                String line = "" ";
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+                String result = "";
+                String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
-                    bufferedReader.close();
-                    inputStream.close();
-                    httpURLConnection.disconnect();
-                    return result;
-                } catch(MalformedURLException e){
-                    e.printStackTrace();
-                } catch(IOException e){
-                    e.printStackTrace();
-                    return null;
-                    @Override
-                    protected void onPreExecute () {
-                        alertDialog = new AlertDialog.Builder(context).create();
-                        alertDialog.setTitle("Register Status");
-                        @Override
-                        protected void on PostExecute(String result) {
-                            alertDialog.setMessage(result);
-                            alertDialog.show();
-                            @Override
-                            protected void onProgressUpdate (Void...values){
-                                super.onProgressUpdate(values);
-                            }
-                        }
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException mal) {
+                mal.printStackTrace();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("Register Status");
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        alertDialog.setMessage(result);
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onProgressUpdate(Void... values) {
+        super.onProgressUpdate(values);
+    }
+}
+
+

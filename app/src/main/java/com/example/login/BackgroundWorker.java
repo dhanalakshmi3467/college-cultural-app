@@ -1,8 +1,13 @@
 package com.example.login;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,6 +24,8 @@ import java.net.URLEncoder;
 
 import javax.xml.transform.Result;
 
+import static android.content.DialogInterface.BUTTON_POSITIVE;
+
 /**
  * Created by Programming Knowledge on 1/5/2016.
  */
@@ -26,15 +33,16 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
 
+    private Dialog loadingDialog;
+
     BackgroundWorker(Context ctx) {
         context = ctx;
-
     }
 
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "http://192.168.43.111/login.php";
+        String login_url = "http://192.168.43.214/login.php";
         if (type.equals("login")) {
             try {
                 String user_name = params[1];
@@ -44,7 +52,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
-                httpURLConnection.setDoInput(true);
+//                httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
@@ -54,12 +62,13 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
                 String result = "";
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
+
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
@@ -78,18 +87,23 @@ public class BackgroundWorker extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Login Status");
+        loadingDialog = ProgressDialog.show(context, "Please Wait", "Loading...");
     }
 
     @Override
     protected void onPostExecute(String result) {
-        alertDialog.setMessage(result);
-        alertDialog.show();
+        if ("success".equals(result)) {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            context.startActivity(new Intent(context, Homepage.class));
+        } else {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        }
+        loadingDialog.dismiss();
     }
 
     @Override
     protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
 
+        super.onProgressUpdate(values);
     }
 }

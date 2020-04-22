@@ -32,7 +32,7 @@ public class AnotherActivity extends AppCompatActivity {
 
     ListModel2 event;
 
-    TextView eventId, title, desc , price;
+    TextView eventId, title, desc, price;
 
     ImageView imageView;
 
@@ -51,7 +51,7 @@ public class AnotherActivity extends AppCompatActivity {
         imageView = findViewById(R.id.eventImage);
     }
 
-    public void loadEventDetails(String id)  {
+    public void loadEventDetails(String id) {
 
         String url = "http://192.168.43.214/displayitems.php?id=" + id;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -70,18 +70,18 @@ public class AnotherActivity extends AppCompatActivity {
                                     product.getString("image"));
 
 
-                            eventId.setText("Event Id: "+String.valueOf( event.getId()));
-                            title.setText("title: "+String.valueOf(event.getTitle()));
-                            desc.setText("desc: "+String.valueOf(event.getShortdesc()));
-                            price.setText("price: "+String.valueOf(event.getPrice()));
+                            eventId.setText("Event Id: " + String.valueOf(event.getId()));
+                            title.setText("title: " + String.valueOf(event.getTitle()));
+                            desc.setText("desc: " + String.valueOf(event.getShortdesc()));
+                            price.setText("price: " + String.valueOf(event.getPrice()));
 
-                            try{
+                            try {
 //                                Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(event.getImage()).getContent());
                                 Picasso.get()
                                         .load(event.getImage())
                                         .into(imageView);
 //                                imageView.setImageBitmap(bitmap);
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
@@ -94,7 +94,7 @@ public class AnotherActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.println(Log.ERROR,"VolleyError", error.toString());
+                        Log.println(Log.ERROR, "VolleyError", error.toString());
                     }
                 });
 

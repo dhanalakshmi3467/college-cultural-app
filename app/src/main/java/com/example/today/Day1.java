@@ -105,7 +105,7 @@ public class Day1 extends Fragment implements ListaAdapter.OnItemClicked {
 
                             //creating adapter object and setting it to recyclerview
 //                            ProductsAdapter adapter = new ProductsAdapter(MainActivity.this, productList);
-                            ListaAdapter adapter = new  ListaAdapter(getContext(), productList);
+                            ListaAdapter adapter = new ListaAdapter(getContext(), productList);
                             recyclerView.setAdapter(adapter);
 //                            adapter.setOnClick(Day1.this);
                         } catch (JSONException e) {

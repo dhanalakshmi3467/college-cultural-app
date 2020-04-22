@@ -8,7 +8,7 @@
 
     android:background="@color/LightYellow"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.nata.myapplication.MainActivity"
+    tools:context="com.example.today.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <GridView
@@ -25,7 +25,7 @@
         android:horizontalSpacing="4dp"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="8dp" >
+        android:verticalSpacing="8dp">
 
 
     </GridView>
@@ -39,24 +39,24 @@
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="75dp"
         android:clickable="true"
-        android:text="              About Us"
         android:onClick="about"
-        android:textSize="25dp"
-        android:textColor="@color/Orange" />
+        android:text="              About Us"
+        android:textColor="@color/Orange"
+        android:textSize="25dp" />
     <!--
         <TextView
             />-->
-   <!-- <TextView
-        android:id="@+id/about"
-        android:layout_width="match_parent"
-        android:layout_height="108dp"
-        android:layout_below="@id/gridViw"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+    <!-- <TextView
+         android:id="@+id/about"
+         android:layout_width="match_parent"
+         android:layout_height="108dp"
+         android:layout_below="@id/gridViw"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentBottom="true"
 
-        android:clickable="true"
-        android:onClick="about"
-        android:text="                About Us"
-        android:textColor="@color/Yellow"
-        android:textSize="30dp" />-->
+         android:clickable="true"
+         android:onClick="about"
+         android:text="                About Us"
+         android:textColor="@color/Yellow"
+         android:textSize="30dp" />-->
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,11 +28,11 @@ import java.util.List;
 
 public class AnotherActivity extends AppCompatActivity {
 
-    List<Product> eventList;
+    List<ListModel2> eventList;
 
-    Product event;
+    ListModel2 event;
 
-    TextView eventId, title, desc , rating, price;
+    TextView eventId, title, desc , price;
 
     ImageView imageView;
 
@@ -46,7 +47,7 @@ public class AnotherActivity extends AppCompatActivity {
         title = findViewById(R.id.eventTitle);
         desc = findViewById(R.id.eventDesc);
         price = findViewById(R.id.eventPricing);
-        rating= findViewById(R.id.eventRating);
+
         imageView = findViewById(R.id.eventImage);
     }
 
@@ -61,10 +62,10 @@ public class AnotherActivity extends AppCompatActivity {
                             JSONObject product = new JSONObject(response);
                             Log.println(Log.INFO, "Event response", product.toString());
 
-                            event = new Product(product.getInt("id"),
+                            event = new ListModel2(product.getInt("id"),
                                     product.getString("title"),
                                     product.getString("shortdesc"),
-                                    product.getDouble("rating"),
+
                                     product.getDouble("price"),
                                     product.getString("image"));
 
@@ -73,7 +74,7 @@ public class AnotherActivity extends AppCompatActivity {
                             title.setText("title: "+String.valueOf(event.getTitle()));
                             desc.setText("desc: "+String.valueOf(event.getShortdesc()));
                             price.setText("price: "+String.valueOf(event.getPrice()));
-                            rating.setText("Rating: "+String.valueOf(event.getRating()));
+
                             try{
 //                                Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(event.getImage()).getContent());
                                 Picasso.get()
@@ -102,4 +103,7 @@ public class AnotherActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
+    public void ticket(View view) {
+
+    }
 }

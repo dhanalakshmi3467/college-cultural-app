@@ -1,20 +1,15 @@
 package com.example.today;
 
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -22,22 +17,35 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.analytics.ecommerce.Product;
+
+import java.util.List;
+
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
+/**
+ * Created by @vitovalov on 30/9/15.
+ */
+
+
+public class Day1 extends Fragment implements ListaAdapter.OnItemClicked {
 
     //this is the JSON Data URL
     //make sure you are using the correct ip else it will not work
     private static final String URL_PRODUCTS = "http://192.168.43.214/api.php";
 
     //a list to store all the products
-    List<Product> productList;
+    List<ListModel2> productList;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -45,7 +53,7 @@ public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_day1, container, false);
+        View view = inflater.inflate(R.layout.techtix, container, false);
 
         //getting the recyclerview from xml
         recyclerView = view.findViewById(R.id.recylcerView);
@@ -85,11 +93,11 @@ public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
                                 JSONObject product = array.getJSONObject(i);
 
                                 //adding the product to product list
-                                productList.add(new Product(
+                                productList.add(new ListModel2(
                                         product.getInt("id"),
                                         product.getString("title"),
                                         product.getString("shortdesc"),
-                                        product.getDouble("rating"),
+
                                         product.getDouble("price"),
                                         product.getString("image")
                                 ));
@@ -97,7 +105,7 @@ public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
 
                             //creating adapter object and setting it to recyclerview
 //                            ProductsAdapter adapter = new ProductsAdapter(MainActivity.this, productList);
-                            ProductsAdapter adapter = new ProductsAdapter(getContext(), productList);
+                            ListaAdapter adapter = new  ListaAdapter(getContext(), productList);
                             recyclerView.setAdapter(adapter);
 //                            adapter.setOnClick(Day1.this);
                         } catch (JSONException e) {
@@ -110,7 +118,7 @@ public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
                     public void onErrorResponse(VolleyError error) {
 // Toast.makeText(getApplicationContext(),"hello world", Toast.LENGTH_LONG);
 
-                        Log.println(Log.ERROR, "putti", error.getMessage());
+                        //   Log.println(Log.ERROR, "putti", error.getMessage());
                     }
                 });
 
@@ -136,3 +144,53 @@ public class Day1 extends Fragment implements ProductsAdapter.OnItemClicked {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* private ListAdapter2 mAdapter;
+
+    private String mItemData = "Robotics  Coding  Gaming  Online  Quizzard  Business  Solve It  Miscellaneous";
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.techtix, container, false);
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(
+                R.id.fragment_list_rv2);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        String[] listItems = mItemData.split("  ");
+
+        List<String> list = new ArrayList<String>();
+        Collections.addAll(list, listItems);
+
+        mAdapter = new ListAdapter2(list);
+        recyclerView.setAdapter(mAdapter);
+
+        return view;
+    }
+}*/

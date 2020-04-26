@@ -25,4 +25,13 @@
 
     </string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="registration">registration</string>
+    <string name="login_btn">login</string>
+    <string name="register">register</string>
+    <string name="email">email</string>
+    <string name="User_name">username</string>
+    <string name="password">password</string>
+    <string name="reg_no">reg_no</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.example.today;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,6 +27,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import static com.example.today.Urls.ANOTHER_URL;
+
 public class AnotherActivity extends AppCompatActivity {
 
     List<ListModel2> eventList;
@@ -35,11 +38,14 @@ public class AnotherActivity extends AppCompatActivity {
     TextView eventId, title, desc, price;
 
     ImageView imageView;
-
+    Toolbar toolbar2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+
+
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         loadEventDetails(id);
@@ -51,9 +57,10 @@ public class AnotherActivity extends AppCompatActivity {
         imageView = findViewById(R.id.eventImage);
     }
 
+
     public void loadEventDetails(String id) {
 
-        String url = "http://192.168.43.214/displayitems.php?id=" + id;
+        String url = ANOTHER_URL + id;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override

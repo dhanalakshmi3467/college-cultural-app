@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="56dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main2"
+    tools:context=".Main2Activity">
+
+    <TextView
+        android:id="@+id/cultural"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:onClick="culture"
+        android:text="Cultural"
+        android:textColor="@android:color/white"
+        android:textSize="54sp" />
+
+    <TextView
+        android:id="@+id/tech"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:onClick="tech"
+        android:text="Technical"
+        android:textColor="@android:color/white"
+        android:textSize="54sp" />
+
+    <Button
+        android:id="@+id/sport"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:onClick="sport"
+        android:text="Sports"
+        android:textColor="@android:color/white"
+        android:textSize="54sp" />
+
+
+</LinearLayout>
+

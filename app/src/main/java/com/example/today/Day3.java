@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -33,16 +34,18 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+import static com.example.today.Urls.DAY3_URL;
+
 /**
  * Created by @vitovalov on 30/9/15.
  */
 
 
-public class Day3 extends Fragment implements ListAdapter2.OnItemClicked {
+public class Day3 extends AppCompatActivity implements ListAdapter2.OnItemClicked {
 
     //this is the JSON Data URL
     //make sure you are using the correct ip else it will not work
-    private static final String URL_PRODUCTS = "http://192.168.43.214/api2.php";
+    private static final String URL_PRODUCTS = DAY3_URL;
 
     //a list to store all the products
     List<ListModel2> productList;
@@ -52,13 +55,13 @@ public class Day3 extends Fragment implements ListAdapter2.OnItemClicked {
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.techtix, container, false);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.techtix);
         //getting the recyclerview from xml
-        recyclerView = view.findViewById(R.id.recylcerView);
+        recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //initializing the productlist
         productList = new ArrayList<>();
@@ -66,7 +69,7 @@ public class Day3 extends Fragment implements ListAdapter2.OnItemClicked {
         //this method will fetch and parse json
         //to display it in recyclerview
         loadProducts();
-        return view;
+
     }
 
     private void loadProducts() {
@@ -105,7 +108,7 @@ public class Day3 extends Fragment implements ListAdapter2.OnItemClicked {
 
                             //creating adapter object and setting it to recyclerview
 //                            ProductsAdapter adapter = new ProductsAdapter(MainActivity.this, productList);
-                            ListAdapter2 adapter = new  ListAdapter2(getContext(), productList);
+                            ListAdapter2 adapter = new  ListAdapter2(Day3.this, productList);
                             recyclerView.setAdapter(adapter);
 //                            adapter.setOnClick(Day1.this);
                         } catch (JSONException e) {
@@ -123,7 +126,7 @@ public class Day3 extends Fragment implements ListAdapter2.OnItemClicked {
                 });
 
         //adding our stringrequest to queue
-        Volley.newRequestQueue(getContext()).add(stringRequest);
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
 

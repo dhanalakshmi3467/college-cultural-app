@@ -36,21 +36,14 @@ import java.util.*;
 
 import static com.example.today.Urls.DAY1_URL;
 
-/**
- * Created by @vitovalov on 30/9/15.
- */
 
 
 public class Day1 extends AppCompatActivity implements ListaAdapter.OnItemClicked {
 
-    //this is the JSON Data URL
-    //make sure you are using the correct ip else it will not work
     private static final String URL_PRODUCTS = DAY1_URL;
 
-    //a list to store all the products
-    List<ListModel2> productList;
+    List<ListData> productList;
 
-    //the recyclerview
     RecyclerView recyclerView;
 
 
@@ -58,30 +51,21 @@ public class Day1 extends AppCompatActivity implements ListaAdapter.OnItemClicke
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.techtix);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getting the recyclerview from xml
         recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //initializing the productlist
+
         productList = new ArrayList<>();
 
-        //this method will fetch and parse json
-        //to display it in recyclerview
         loadProducts();
 
     }
 
     private void loadProducts() {
 
-        /*
-         * Creating a String Request
-         * The request type is GET defined by first parameter
-         * The URL is defined in the second parameter
-         * Then we have a Response Listener and a Error Listener
-         * In response listener we will get the JSON response as a String
-         * */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
                 new Response.Listener<String>() {
                     @Override
@@ -97,10 +81,10 @@ public class Day1 extends AppCompatActivity implements ListaAdapter.OnItemClicke
                                 JSONObject product = array.getJSONObject(i);
 
                                 //adding the product to product list
-                                productList.add(new ListModel2(
+                                productList.add(new ListData(
                                         product.getInt("id"),
                                         product.getString("title"),
-                                        product.getString("shortdesc"),
+
 
                                         product.getDouble("price"),
                                         product.getString("image")
@@ -137,6 +121,10 @@ public class Day1 extends AppCompatActivity implements ListaAdapter.OnItemClicke
     }
    */
 
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
     @Override
     public void onItemClick(int position) {
 

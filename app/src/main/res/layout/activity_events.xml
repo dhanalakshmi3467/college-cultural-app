@@ -9,10 +9,20 @@
     tools:showIn="@layout/activity_main2"
     tools:context=".Main2Activity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createEventFloat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="createEvent"
+        android:background="@color/Purple"
+        android:layout_gravity="end|bottom"
+        android:visibility="gone"
+        />
+
     <TextView
         android:id="@+id/cultural"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/colorAccent"
         android:fontFamily="sans-serif-smallcaps"
@@ -27,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
+        android:background="@color/Blue"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:onClick="tech"
@@ -40,13 +50,29 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/Coral"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:onClick="sport"
         android:text="Sports"
         android:textColor="@android:color/white"
         android:textSize="54sp" />
+
+<!--
+    <Button
+        android:id="@+id/createEvent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/Coral"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:onClick="createEvent"
+        android:text="create event"
+        android:textColor="@android:color/white"
+        android:textSize="54sp"
+        android:visibility="gone"
+        />-->
 
 
 </LinearLayout>

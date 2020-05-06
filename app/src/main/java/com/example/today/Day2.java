@@ -2,6 +2,7 @@ package com.example.today;
 
 import android.os.Bundle;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,19 +37,15 @@ import java.util.*;
 
 import static com.example.today.Urls.DAY2_URL;
 
-/**
- * Created by @vitovalov on 30/9/15.
- */
 
 
 public class Day2 extends AppCompatActivity implements ListaAdapter1.OnItemClicked {
 
-    //this is the JSON Data URL
-    //make sure you are using the correct ip else it will not work
+
     private static final String URL_PRODUCTS = DAY2_URL;
 
     //a list to store all the products
-    List<ListModel2> productList;
+    List<ListData> productList;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -58,6 +55,7 @@ public class Day2 extends AppCompatActivity implements ListaAdapter1.OnItemClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.techtix);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getting the recyclerview from xml
         recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setHasFixedSize(true);
@@ -96,18 +94,14 @@ public class Day2 extends AppCompatActivity implements ListaAdapter1.OnItemClick
                                 JSONObject product = array.getJSONObject(i);
 
                                 //adding the product to product list
-                                productList.add(new ListModel2(
+                                productList.add(new ListData(
                                         product.getInt("id"),
                                         product.getString("title"),
-                                        product.getString("shortdesc"),
-
                                         product.getDouble("price"),
                                         product.getString("image")
                                 ));
                             }
 
-                            //creating adapter object and setting it to recyclerview
-//                            ProductsAdapter adapter = new ProductsAdapter(MainActivity.this, productList);
                             ListaAdapter1 adapter = new ListaAdapter1(Day2.this, productList);
                             recyclerView.setAdapter(adapter);
 //                            adapter.setOnClick(Day1.this);
@@ -130,12 +124,15 @@ public class Day2 extends AppCompatActivity implements ListaAdapter1.OnItemClick
     }
 
 
-   /* @Override
+    @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
         return super.onKeyLongPress(keyCode, event);
     }
-   */
 
+   public boolean onSupportNavigateUp() {
+       finish();
+       return true;
+   }
     @Override
     public void onItemClick(int position) {
 

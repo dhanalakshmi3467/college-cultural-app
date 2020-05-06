@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-      <!--  <item name="colorPrimary">@color/Black</item>
- -->       <item name="colorPrimaryDark">@color/Yellow</item>
+        <!--  <item name="colorPrimary">@color/Black</item>
+   -->       <item name="colorPrimaryDark">@color/Yellow</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppTheme.Shelves" >
-        <item name="android:windowBackground">@drawable/download</item>
+     <!--   <item name="android:windowBackground">@drawable/download</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

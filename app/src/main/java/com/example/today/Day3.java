@@ -48,7 +48,7 @@ public class Day3 extends AppCompatActivity implements ListAdapter2.OnItemClicke
     private static final String URL_PRODUCTS = DAY3_URL;
 
     //a list to store all the products
-    List<ListModel2> productList;
+    List<ListData> productList;
 
     //the recyclerview
     RecyclerView recyclerView;
@@ -58,6 +58,7 @@ public class Day3 extends AppCompatActivity implements ListAdapter2.OnItemClicke
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.techtix);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getting the recyclerview from xml
         recyclerView = findViewById(R.id.recylcerView);
         recyclerView.setHasFixedSize(true);
@@ -96,10 +97,9 @@ public class Day3 extends AppCompatActivity implements ListAdapter2.OnItemClicke
                                 JSONObject product = array.getJSONObject(i);
 
                                 //adding the product to product list
-                                productList.add(new ListModel2(
+                                productList.add(new ListData(
                                         product.getInt("id"),
                                         product.getString("title"),
-                                        product.getString("shortdesc"),
 
                                         product.getDouble("price"),
                                         product.getString("image")
@@ -128,7 +128,10 @@ public class Day3 extends AppCompatActivity implements ListAdapter2.OnItemClicke
         //adding our stringrequest to queue
         Volley.newRequestQueue(this).add(stringRequest);
     }
-
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 
    /* @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {

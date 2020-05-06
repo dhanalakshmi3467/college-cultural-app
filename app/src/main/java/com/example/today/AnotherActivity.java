@@ -44,7 +44,7 @@ public class AnotherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -109,8 +109,14 @@ public class AnotherActivity extends AppCompatActivity {
         //adding our stringrequest to queue
         Volley.newRequestQueue(this).add(stringRequest);
     }
-
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
     public void ticket(View view) {
+       /* Intent intent = new Intent(createPackageContext(), Login.class);
+        startActivity(intent);
+        finish();*/
 
     }
 }

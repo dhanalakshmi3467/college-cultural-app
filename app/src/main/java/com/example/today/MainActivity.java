@@ -3,14 +3,18 @@ package com.example.today;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -24,13 +28,18 @@ import android.widget.AdapterView.OnItemClickListener;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.plattysoft.leonids.ParticleSystem;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnTouchListener {
     GridView grid;
+
+    public Typeface customtypeface;
+    long backPressedTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +51,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         grid = (GridView) findViewById(R.id.gridViw);
         grid.setAdapter(new NavAdapter(this));
 
+
+        customtypeface = Typeface.createFromAsset(getAssets(),"fonts/DancingScript-Regular.ttf");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Intent i1 = new Intent(MainActivity.this, accc.class);
                     startActivity(i1);
                 } else if (position == 2) {
-                    Intent i1 = new Intent(MainActivity.this, ScheduleActivity.class);
+                    Intent i1 = new Intent(MainActivity.this, Schedule.class);
                     i1.putExtra("extra", 2);
                     startActivity(i1);
                 } else if (position == 3) {
@@ -88,13 +103,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(i1);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onTouch(final View view, MotionEvent motionEvent) {
+        new ParticleSystem(this, 100,R.drawable.star_pink, 1000)
+                .setScaleRange(0.7f,1.3f)
+                .setAcceleration(0.00013f, 90)
+                .setSpeedByComponentsRange(0f, 0f, 0.05f, 0.1f)
+                .setFadeOut(400, new AccelerateInterpolator())
+                .emitWithGravity(view, Gravity.TOP,30,300);
+
+        return true;
+    }
+
+
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        long t = System.currentTimeMillis();
+        if (t - backPressedTime > 2000) {    // 2 secs
+            backPressedTime = t;
+            //Toast.makeText(this, "Press one more time to exit", Toast.LENGTH_SHORT).show();
+            moveTaskToBack(true);
+        } else {    // this guy is serious
+            // clean up
+            moveTaskToBack(true);
         }
     }
 
@@ -114,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
 
         } else if (id == R.id.nav_schedule) {
-            Intent i = new Intent(MainActivity.this, ScheduleActivity.class);
+            Intent i = new Intent(MainActivity.this, Schedule.class);
 
             i.putExtra("extra", 2);
             startActivity(i);
@@ -127,6 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
         } else if (id == R.id.nav_send) {
             Intent i = new Intent(MainActivity.this, ContactUs.class);
+            startActivity(i);
+        } else if (id == R.id.nav_view) {
+            Intent i = new Intent(MainActivity.this, Logout.class);
             startActivity(i);
         }
 
@@ -155,8 +207,8 @@ class NavAdapter extends BaseAdapter {
         list = new ArrayList<items>();
         Resources res = context.getResources();
         String[] temp = res.getStringArray(R.array.abcd);
-        int[] images = {R.drawable.ic_menu_camera, R.drawable.ic_menu_gallery, R.drawable.ic_menu_manage,
-                R.drawable.ic_menu_send, R.drawable.ic_menu_share, R.drawable.ic_menu_slideshow};
+        int[] images = {R.drawable.western, R.drawable.unnamed, R.drawable.eye,
+                R.drawable.girly, R.drawable.cultu, R.drawable.color};
         for (int i = 0; i < 6; i++) {
             items tempItems = new items(images[i], temp[i]);
             list.add(tempItems);

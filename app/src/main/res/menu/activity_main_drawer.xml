@@ -9,7 +9,7 @@
     <item
         android:id="@+id/nav_gallery"
         android:icon="@drawable/ic_menu_gallery"
-        android:title="games" />
+        android:title="Departments" />
     <item
         android:id="@+id/nav_schedule"
         android:icon="@drawable/ic_menu_manage"
@@ -28,6 +28,8 @@
         android:id="@+id/nav_faqs"
         android:icon="@drawable/ic_menu_share"
         android:title="Developers" />
-
-
+<item
+    android:id="@+id/nav_view"
+    android:icon="@drawable/ic_menu_share"
+    android:title="logout" />
 </menu>

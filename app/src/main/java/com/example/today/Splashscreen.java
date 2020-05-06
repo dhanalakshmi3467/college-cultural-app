@@ -9,6 +9,32 @@ import android.support.v4.app.*;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.os.Bundle;
+import android.widget.ProgressBar;
+
+public class Splashscreen extends AppCompatActivity {
+
+    final int TIME = 2000;
+    ProgressBar pb;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTheme(android.R.style.Theme_DeviceDefault_Panel);
+        setContentView(R.layout.activity_splash);
+        pb= (ProgressBar)findViewById(R.id.progressBar2);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                Splashscreen.this.startActivity(new Intent(Splashscreen.this,Login.class));
+                pb.setProgress(50);
+                pb.setProgress(100);
+                Splashscreen.this.finish();
+            }
+        },(long) TIME);
+
+    }
+}
+/*
 
 public class Splashscreen extends AppCompatActivity {
     private static int SPLASH_SCREEN_TIME_OUT = 2000;
@@ -45,3 +71,4 @@ public class Splashscreen extends AppCompatActivity {
 
 //public class Splashscreen {
 //}
+*/

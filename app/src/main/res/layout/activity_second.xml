@@ -1,178 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    android:orientation="vertical"
-    tools:context=".AnotherActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/eventImage"
-        android:layout_width="374dp"
-        android:layout_height="218dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="68dp"
-        android:src="@drawable/donut"
-        app:layout_constraintBottom_toTopOf="@+id/eventId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</LinearLayout>
-
-        <TextView
-            android:id="@+id/eventId"
-            android:layout_width="66dp"
-            android:layout_height="32dp"
-            android:layout_marginBottom="323dp"
-            android:text="TextView"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.231"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
-
-        <TextView
-            android:id="@+id/eventTitle"
-            android:layout_width="163dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="164dp"
-            android:layout_marginEnd="90dp"
-            android:layout_marginBottom="244dp"
-            android:text="TextView"
-            android:textColor="@color/colorAccent"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.854" />
-
-    <TextView
-        android:id="@+id/eventDesc"
-        android:layout_width="289dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="192dp"
-        android:text="TextView"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/eventPricing"
-        android:layout_width="254dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="104dp"
-        android:text="TextView"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-
-
-
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/eventImage"
-        android:layout_width="match_parent"
-        android:layout_height="307dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/download" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="420dp"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/eventId"
-            android:layout_width="380dp"
-            android:layout_height="40dp"
-            android:maxLines="1"
-            android:text="                         event Id"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/Orange"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/eventTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="            Dance Competation"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/Orange"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/eventDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:maxLines="5"
-            android:text="The company's Windows 10 chief has tweeted that developing new features and hardware for the Mobile version of the OS was no longer "
-            android:textColor="@color/Orange"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <TextView
-            android:id="@+id/eventPricing"
-            android:layout_width="371dp"
-            android:layout_height="44dp"
-            android:text="                                   price "
-            android:textColor="@color/Orange"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <Button
-            android:layout_width="393dp"
-            android:layout_height="84dp"
-            android:background="@color/Orange"
-            android:onClick="BookTicket"
-            android:text="bookTicket" />
-
-    </LinearLayout>
-
-    &lt;!&ndash;  <TextView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:text="fiuyuwefke8f"
-          &ndash;&gt;
-
-</LinearLayout>-->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -269,13 +96,8 @@
                         android:layout_marginTop="5dp"
                         android:text="Studio" />
 -->
-
                 </LinearLayout>
-
-
             </LinearLayout>
-
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         <TextView
@@ -309,13 +131,182 @@
             android:onClick="BookTicket"
             android:text="bookTicket"  />
 
-
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
-
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+    <!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        tools:context=".AnotherActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/eventImage"
+            android:layout_width="374dp"
+            android:layout_height="218dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="68dp"
+            android:src="@drawable/donut"
+            app:layout_constraintBottom_toTopOf="@+id/eventId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+            <TextView
+                android:id="@+id/eventId"
+                android:layout_width="66dp"
+                android:layout_height="32dp"
+                android:layout_marginBottom="323dp"
+                android:text="TextView"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.231"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.965" />
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="163dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="164dp"
+                android:layout_marginEnd="90dp"
+                android:layout_marginBottom="244dp"
+                android:text="TextView"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.854" />
+
+        <TextView
+            android:id="@+id/eventDesc"
+            android:layout_width="289dp"
+            android:layout_height="99dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="192dp"
+            android:text="TextView"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/eventPricing"
+            android:layout_width="254dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginBottom="104dp"
+            android:text="TextView"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
+
+
+    <!--
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/eventImage"
+            android:layout_width="match_parent"
+            android:layout_height="307dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/download" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/eventId"
+                android:layout_width="380dp"
+                android:layout_height="40dp"
+                android:maxLines="1"
+                android:text="                         event Id"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/Orange"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="            Dance Competation"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/Orange"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/eventDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:text="The company's Windows 10 chief has tweeted that developing new features and hardware for the Mobile version of the OS was no longer "
+                android:textColor="@color/Orange"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/eventPricing"
+                android:layout_width="371dp"
+                android:layout_height="44dp"
+                android:text="                                   price "
+                android:textColor="@color/Orange"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <Button
+                android:layout_width="393dp"
+                android:layout_height="84dp"
+                android:background="@color/Orange"
+                android:onClick="BookTicket"
+                android:text="bookTicket" />
+
+        </LinearLayout>
+
+        &lt;!&ndash;  <TextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="fiuyuwefke8f"
+              &ndash;&gt;
+
+    </LinearLayout>-->

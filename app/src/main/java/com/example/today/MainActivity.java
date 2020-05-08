@@ -1,11 +1,16 @@
 package com.example.today;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -29,30 +34,61 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.today.models.LoginResponse;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 import com.plattysoft.leonids.ParticleSystem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnTouchListener {
     GridView grid;
 
+    String rigntone;
+    NotificationManager notificationManager;
+    String uname;
+
     public Typeface customtypeface;
     long backPressedTime=0;
+    private ObjectMapper objectMapper = new ObjectMapper();
+    public static LoginResponse LoggedInUserInfo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Notification process
+        //preference Notification
+        //preference Notification
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        rigntone = sp.getString("ring1", "default ringtone");
+        uname = sp.getString("name1", "Guest");
+        //  Toast.makeText(MainActivity.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
+        showNotification();
+
+
+        Intent intent = getIntent();
+        if(intent.hasExtra("loginResponse")){
+            String loginResponse = intent.getStringExtra("loginResponse");
+            try{
+                LoggedInUserInfo = objectMapper.readValue(loginResponse,LoginResponse.class);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
 
         // Intent it=new Intent(this,NotifyMain.class);
         grid = (GridView) findViewById(R.id.gridViw);
         grid.setAdapter(new NavAdapter(this));
 
 
-        customtypeface = Typeface.createFromAsset(getAssets(),"fonts/DancingScript-Regular.ttf");
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -96,6 +132,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+    }
+    public void showNotification() {
+        PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, MainActivity.class), 0);
+        Resources r = getResources();
+        Notification notification = new NotificationCompat.Builder(this)
+                .setTicker("Android")
+                .setSmallIcon(android.R.drawable.ic_menu_report_image)
+                .setContentTitle("SCC App")
+                .setSmallIcon(R.drawable.ic_date_range)
+                .setSound(Uri.parse(rigntone))
+                .setContentText("College App Running")
+                .setContentIntent(pi)
+                .setAutoCancel(true)
+                .build();
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notification);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        notificationManager.cancel(1);
     }
 
     public void about(View v) {
@@ -178,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent i = new Intent(MainActivity.this, ContactUs.class);
             startActivity(i);
         } else if (id == R.id.nav_view) {
-            Intent i = new Intent(MainActivity.this, Logout.class);
+            Intent i = new Intent(MainActivity.this, Login.class);
             startActivity(i);
         }
 
@@ -187,6 +247,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 }
+
+
 
 class items {
     int images;

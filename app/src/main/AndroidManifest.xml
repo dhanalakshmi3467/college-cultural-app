@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateEvent"></activity>
+        <activity android:name=".DisplayEvent"></activity>
+        <activity android:name=".EventsManagement" />
+        <activity android:name=".CreateEvent" />
         <activity
             android:name=".Splashscreen"
             android:label="@string/app_name"
@@ -41,7 +43,6 @@
         <activity android:name=".AnotherActivity" />
         <activity android:name=".AnotherActivity1" />
         <activity android:name=".AnotherActivity2" />
-        <activity android:name=".Logout" />
         <activity android:name=".Day1" />
         <activity android:name=".Day2" />
         <activity android:name=".Day3" />

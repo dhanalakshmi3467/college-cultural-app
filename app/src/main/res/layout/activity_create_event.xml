@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateEvent">
+
+
+    <EditText
+        android:id="@+id/createEventTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title" />
+
+    <EditText
+        android:id="@+id/createEventDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description" />
+
+    <EditText
+        android:id="@+id/createEventPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="number" />
+
+    <!--<DatePicker
+        android:id="@+id/createEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+
+
+        <EditText
+            android:id="@+id/createEventDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789-"
+            android:gravity="center"
+            android:hint="Event date"
+            android:imeOptions="actionNext"
+            android:inputType="date"
+            android:textColor="#483d8b"/>
+
+
+        <EditText
+            android:id="@+id/StartTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="Start time"
+            android:inputType="time" />
+
+    <!-- <TimePicker
+         android:id="@+id/createEventTime"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+
+   <!-- <ImageView
+        android:id="@+id/createEventImageUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+    <!--
+        <ImageView
+            android:id="@+id/festival_image"
+            android:layout_width="309dp"
+            android:layout_height="180dp"
+            android:layout_weight="1"
+            android:padding="1dp" />-->
+
+    <!--<Button
+        android:id="@+id/choose_image_button"
+        android:layout_width="135dp"
+        android:layout_height="69dp"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="Upload image" />-->
+
+
+    <Spinner
+        android:id="@+id/eventType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="eventCreate"
+        android:text="Create Event"/>
+</LinearLayout>

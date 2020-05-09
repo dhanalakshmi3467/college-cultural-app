@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayEvent"></activity>
+        <activity android:name=".DisplayMyEvent"></activity>
+        <activity android:name=".DisplayMyEventsCollections" />
+        <activity android:name=".DisplayEvent" />
         <activity android:name=".EventsManagement" />
         <activity android:name=".CreateEvent" />
         <activity

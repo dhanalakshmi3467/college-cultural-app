@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -33,13 +32,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.today.models.LoginResponse;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 import com.plattysoft.leonids.ParticleSystem;
@@ -239,6 +236,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
         } else if (id == R.id.nav_view) {
             Intent i = new Intent(MainActivity.this, Login.class);
+            startActivity(i);
+        } else if (id == R.id.nav_mybooking) {
+            Intent i = new Intent(MainActivity.this, DisplayMyEventsCollections.class);
             startActivity(i);
         }
 

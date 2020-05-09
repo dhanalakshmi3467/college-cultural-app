@@ -33,6 +33,7 @@
     <string name="User_name">username</string>
     <string name="password">password</string>
     <string name="reg_no">reg_no</string>
+    <string name="no_reg_event_found"> No Registered event found.</string>
 
 
 </resources>

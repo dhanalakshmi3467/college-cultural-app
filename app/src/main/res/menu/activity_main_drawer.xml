@@ -28,6 +28,10 @@
         android:id="@+id/nav_faqs"
         android:icon="@drawable/ic_menu_share"
         android:title="Developers" />
+    <item
+        android:id="@+id/nav_mybooking"
+        android:icon="@drawable/ic_menu_share"
+        android:title="MyEvents" />
 <item
     android:id="@+id/nav_view"
     android:icon="@drawable/ic_menu_share"

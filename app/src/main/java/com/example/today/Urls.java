@@ -20,5 +20,6 @@ public class Urls {
     public static final String IS_EVENT_BOOKED_URL = String.format("%s/isEventBooked.php",HOST);
     public static final String REGISTER_EVENT_URL = String.format("%s/RegisterEvent.php",HOST);
     public static final String UNREGISTER_EVENT_URL = String.format("%s/UnRegisterEvent.php",HOST);
+    public static final String MY_EVENTS_REGISTERED_URL = String.format("%s/getEventsBooked.php?email=",HOST);
 
 }

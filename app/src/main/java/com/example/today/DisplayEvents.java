@@ -21,7 +21,7 @@ public class DisplayEvents extends RecyclerView.Adapter<DisplayEvents.ProductVie
 
     private Context mCtx;
     private List<Events> events;
-    private DisplayEventTypeAdapter.OnItemClicked onClick;
+    private OnItemClicked onClick;
 
 
     public interface OnItemClicked {

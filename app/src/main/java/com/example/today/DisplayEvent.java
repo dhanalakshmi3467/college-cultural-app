@@ -90,9 +90,7 @@ public class DisplayEvent extends AppCompatActivity {
                 Log.println(Log.ERROR, "DELETE_ME", register.getText().toString());
                 if (REGISTER.equals(register.getText().toString())) {
                     registerEvent(event.getId(), MainActivity.LoggedInUserInfo.getEmail());
-                    Log.println(Log.ERROR, "DELETE_ME1", register.getText().toString());
                 } else {
-                    Log.println(Log.ERROR, "DELETE_ME2", register.getText().toString());
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DisplayEvent.this);
                     alertDialog.setTitle("Unregister event");
                     alertDialog.setMessage("Please click confirm to unregister.");
@@ -273,7 +271,7 @@ public class DisplayEvent extends AppCompatActivity {
                 try {
                     String eventId = params[0];
                     String userId = params[1];
-                    Log.println(Log.ERROR, "response natasss", eventId + "\t" + userId);
+                    Log.println(Log.ERROR, "unregister response", eventId + "\t" + userId);
                     URL url = new URL(UNREGISTER_EVENT_URL);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");

@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
     <string-array name="abcd">
         <item>Events</item>
-        <item>games</item>
+        <item>Departments</item>
         <item>Schedule</item>
         <item>Map</item>
         <item>Contact us</item>
@@ -33,5 +33,15 @@
     <string name="User_name">username</string>
     <string name="password">password</string>
     <string name="reg_no">reg_no</string>
+    <string name="no_reg_event_found"> No Registered event found.</string>
+    <!--Another register  and login details-->
+    <string name="register1">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="login_name_hint">Name</string>
+    <string name="login_mobile_number_hint">Mobile Number</string>
+
 
 </resources>

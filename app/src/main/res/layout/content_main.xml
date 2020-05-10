@@ -8,7 +8,7 @@
 
     android:background="@color/LightYellow"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.today.MainActivity"
+    tools:context="com.example.today.Dashboard"
     tools:showIn="@layout/app_bar_main">
 
     <GridView
@@ -34,13 +34,12 @@
         android:id="@+id/about"
         android:layout_width="287dp"
         android:layout_height="55dp"
-        android:layout_alignEnd="@+id/gridViw"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="61dp"
         android:layout_marginBottom="75dp"
         android:clickable="true"
         android:onClick="about"
-        android:text="              About Us"
+        android:text="                        About Us"
         android:textColor="@color/Orange"
         android:textSize="25dp" />
     <!--

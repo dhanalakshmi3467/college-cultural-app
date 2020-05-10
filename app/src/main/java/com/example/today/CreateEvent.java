@@ -11,12 +11,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -39,11 +37,11 @@ import static com.example.today.Urls.CREATE_EVENT_URL;
 
 public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Button buttonChooseImage;
-    private Bitmap bitmap;
+    /*private Button buttonChooseImage;
+    private Bitmap bitmap;*/
     final Calendar myCalendar = Calendar.getInstance();
     private final Calendar calendar = Calendar.getInstance();
-    private ImageView image;
+ //   private ImageView image;
     //    Spinner eventType;
     static EditText title, price, description, imageUrl, eventDate, eventTime;
     private static EventType[] eventTypeModels;
@@ -54,7 +52,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         eventType = getIntent().getStringExtra("type");
         title = findViewById(R.id.createEventTitle);
         description = findViewById(R.id.createEventDescription);
@@ -177,7 +175,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     public void eventCreate(View view) {
         CreateEventBackground createEventBackground = new CreateEventBackground();
         createEventBackground.execute(title.getText().toString(), description.getText().toString(),
-                price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(),MainActivity.LoggedInUserInfo.getUuid());
+                price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(), Dashboard.LoggedInUserInfo.getUuid());
     }
 
     public class CreateEventBackground extends AsyncTask<String,Void,String> {
@@ -202,8 +200,6 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         @Override
         protected String doInBackground(String[] params) {
             try {
-                /* createEventBackground.execute(title.getText().toString(), description.getText().toString(),
-                price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(),MainActivity.LoggedInUserInfo.getUuid());*/
                 String title = params[0];
                 String description = params[1];
                 String price = params[2];
@@ -248,5 +244,14 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             }
             return null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(CreateEvent.this,EventsManagement.class);
+        intent.putExtra("type", eventType);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

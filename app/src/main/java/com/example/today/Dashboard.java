@@ -11,14 +11,11 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
@@ -40,9 +37,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
-import com.plattysoft.leonids.ParticleSystem;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridView grid;
 
     String rigntone;
@@ -64,11 +60,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Notification process
         //preference Notification
         //preference Notification
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Dashboard.this);
         rigntone = sp.getString("ring1", "default ringtone");
-        uname = sp.getString("name1", "Guest");
-       // MainActivity.LoggedInUserInfo.getUsername();
-         Toast.makeText(MainActivity.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
+        uname = sp.getString("name1", "User");
+        //Dashboard.LoggedInUserInfo.getUuid();
+
+         Toast.makeText(Dashboard.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
         showNotification();
 
 
@@ -108,23 +105,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                    Intent i = new Intent(Dashboard.this, DisplayEventTypes.class);
                     startActivity(i);
                 } else if (position == 1) {
-                    Intent i1 = new Intent(MainActivity.this, accc.class);
+                    Intent i1 = new Intent(Dashboard.this, accc.class);
                     startActivity(i1);
                 } else if (position == 2) {
-                    Intent i1 = new Intent(MainActivity.this, CampusNews.class);
+                    Intent i1 = new Intent(Dashboard.this, CampusNews.class);
                     i1.putExtra("extra", 2);
                     startActivity(i1);
                 } else if (position == 3) {
                     Intent i1 = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
                     startActivity(i1);
                 } else if (position == 4) {
-                    Intent i1 = new Intent(MainActivity.this, ContactUs.class);
+                    Intent i1 = new Intent(Dashboard.this, Cart.class);
                     startActivity(i1);
                 } else if (position == 5) {
-                    Intent i1 = new Intent(MainActivity.this, developer.class);
+                    Intent i1 = new Intent(Dashboard.this, developer.class);
                     startActivity(i1);
                 }
 
@@ -133,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
     public void showNotification() {
-        PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, MainActivity.class), 0);
+        PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, Dashboard.class), 0);
         Resources r = getResources();
         Notification notification = new NotificationCompat.Builder(this)
                 .setTicker("Android")
@@ -158,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void about(View v) {
-        Intent i1 = new Intent(MainActivity.this, AboutUs.class);
+        Intent i1 = new Intent(Dashboard.this, AboutUs.class);
         startActivity(i1);
     }
 
@@ -214,15 +211,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_event) {
-            Intent i = new Intent(MainActivity.this, Main2Activity.class);
+            Intent i = new Intent(Dashboard.this, DisplayEventTypes.class);
             startActivity(i);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Intent i = new Intent(MainActivity.this, accc.class);
+            Intent i = new Intent(Dashboard.this, accc.class);
             startActivity(i);
 
         } else if (id == R.id.nav_schedule) {
-            Intent i = new Intent(MainActivity.this, Schedule.class);
+            Intent i = new Intent(Dashboard.this, CampusNews.class);
 
             i.putExtra("extra", 2);
             startActivity(i);
@@ -231,16 +228,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(i);
 
         } else if (id == R.id.nav_faqs) {
-            Intent i = new Intent(MainActivity.this, developer.class);
+            Intent i = new Intent(Dashboard.this, developer.class);
             startActivity(i);
         } else if (id == R.id.nav_send) {
-            Intent i = new Intent(MainActivity.this, ContactUs.class);
+            Intent i = new Intent(Dashboard.this, Cart.class);
             startActivity(i);
         } else if (id == R.id.nav_view) {
-            Intent i = new Intent(MainActivity.this, Login.class);
+            Intent i = new Intent(Dashboard.this, Login.class);
             startActivity(i);
         } else if (id == R.id.nav_mybooking) {
-            Intent i = new Intent(MainActivity.this, DisplayMyEventsCollections.class);
+            Intent i = new Intent(Dashboard.this, DisplayMyEventsCollections.class);
             startActivity(i);
         }
 
@@ -322,6 +319,5 @@ class NavAdapter extends BaseAdapter {
         holder.images.setImageResource(tempo.images);
         holder.texts.setText(tempo.itemName);
         return row;
-
     }
 }

@@ -2,7 +2,7 @@ package com.example.today;
 
 import java.util.Date;
 
-public class News_List {
+public class NewsList {
     private int id;
     private String title;
     private String news_by;
@@ -10,7 +10,7 @@ public class News_List {
     private String date;
     private String image;
 
-    public News_List(int id, String title, String news_by, String info, String date, String image) {
+    public NewsList(int id, String title, String news_by, String info, String date, String image) {
         this.id = id;
         this.title = title;
         this.news_by = news_by;

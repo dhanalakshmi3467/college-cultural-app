@@ -5,18 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 
-import android.os.Bundle;
-
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -24,15 +14,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
-import com.google.android.gms.analytics.ecommerce.Product;
 
 import java.util.List;
 
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,14 +27,13 @@ import org.json.JSONObject;
 import java.util.*;
 
 import static com.example.today.Urls.CAMPUS_NEWS_URL;
-import static com.example.today.Urls.DAY1_URL;
 
 
 public class CampusNews extends AppCompatActivity implements CampusNewsAdapter.OnItemClicked {
 
     private static final String URL_PRODUCTS = CAMPUS_NEWS_URL;
 
-    List<News_List> productList;
+    List<NewsList> productList;
 
     RecyclerView recyclerView;
 
@@ -83,7 +68,7 @@ public class CampusNews extends AppCompatActivity implements CampusNewsAdapter.O
 
                                 JSONObject product = array.getJSONObject(i);
 
-                                productList.add(new News_List(
+                                productList.add(new NewsList(
                                         product.getInt("id"),
                                         product.getString("title"),
                                         product.getString("news_by"),

@@ -18,8 +18,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="179dp"
-                android:layout_height="195dp"
+                android:layout_width="238dp"
+                android:layout_height="193dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="45dp"
                 android:src="@drawable/eye" />

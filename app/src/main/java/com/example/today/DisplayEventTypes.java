@@ -3,7 +3,6 @@ package com.example.today;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,7 +11,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -31,7 +29,7 @@ import java.util.*;
 
 import static com.example.today.Urls.GET_EVENT_TYPE_URL;
 
-public class Main2Activity extends AppCompatActivity {
+public class DisplayEventTypes extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
     private Toolbar toolbar2;
     public EventType[] eventTypeModel;
@@ -43,6 +41,7 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        Button createEvent = findViewById(R.id.createEvent);
 /*
@@ -104,20 +103,22 @@ public class Main2Activity extends AppCompatActivity {
 
     }*/
 
+/*
     public void culture(View view) {
-        Intent intent = new Intent(Main2Activity.this, Day1.class);
+        Intent intent = new Intent(DisplayEventTypes.this, Day1.class);
         startActivity(intent);
     }
 
     public void tech(View view) {
-        Intent intent = new Intent(Main2Activity.this, Day3.class);
+        Intent intent = new Intent(DisplayEventTypes.this, Day3.class);
         startActivity(intent);
     }
 
     public void sport(View view) {
-        Intent intent = new Intent(Main2Activity.this, Day2.class);
+        Intent intent = new Intent(DisplayEventTypes.this, Day2.class);
         startActivity(intent);
     }
+*/
 
 
     static class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -174,7 +175,7 @@ public class Main2Activity extends AppCompatActivity {
                             CollectionType typeReference =
                                     TypeFactory.defaultInstance().constructCollectionType(List.class, EventType.class);
                             List<EventType> eventTypes = objectMapper.readValue(response, typeReference);
-                            DisplayEventTypeAdapter adapter = new DisplayEventTypeAdapter(Main2Activity.this, eventTypes);
+                            DisplayEventTypeAdapter adapter = new DisplayEventTypeAdapter(DisplayEventTypes.this, eventTypes);
                             recyclerView.setAdapter(adapter);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -188,6 +189,14 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 });
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DisplayEventTypes.this, Dashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }

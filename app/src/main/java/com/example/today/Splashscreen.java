@@ -9,31 +9,49 @@ import android.support.v4.app.*;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class Splashscreen extends AppCompatActivity {
 
-    final int TIME = 2000;
-    ProgressBar pb;
+    private  static  int SPLASH_SCREEN =2500;
+
+    ImageView imageView;
+    TextView textView1, textView2;
+    Animation top, bottom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(android.R.style.Theme_DeviceDefault_Panel);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        pb= (ProgressBar)findViewById(R.id.progressBar2);
-        new Handler().postDelayed(new Runnable() {
+
+        imageView = findViewById(R.id.imageView);
+        textView1 = findViewById(R.id.textView);
+       // textView2 = findViewById(R.id.textView2);
+
+
+        top = AnimationUtils.loadAnimation(this, R.anim.top);
+        bottom = AnimationUtils.loadAnimation(this, R.anim.bottom);
+        imageView.setAnimation(top);
+        textView1.setAnimation(bottom);
+
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
             public void run() {
-
-                Splashscreen.this.startActivity(new Intent(Splashscreen.this,Login.class));
-                pb.setProgress(50);
-                pb.setProgress(100);
-                Splashscreen.this.finish();
+                Intent intent = new Intent(Splashscreen.this, Login.class);
+                startActivity(intent);
+                finish();
             }
-        },(long) TIME);
+        },SPLASH_SCREEN);
 
     }
 }
+
 /*
 
 public class Splashscreen extends AppCompatActivity {
@@ -49,13 +67,13 @@ public class Splashscreen extends AppCompatActivity {
         //can cover the entire screen.
 
         setContentView(R.layout.activity_main2);
-        //this will bind your MainActivity.class file with activity_main.
+        //this will bind your Dashboard.class file with activity_main.
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent i = new Intent(Splashscreen.this,
-                        MainActivity.class);
+                        Dashboard.class);
                 //Intent is used to switch from one activity to another.
 
                 startActivity(i);

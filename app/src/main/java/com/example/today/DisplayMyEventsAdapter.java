@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
-public class DisplayMyEvents extends RecyclerView.Adapter<DisplayMyEvents.ProductViewHolder> {
+public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEventsAdapter.ProductViewHolder> {
 
     private Context mCtx;
     private List<Events> events;
@@ -29,7 +29,7 @@ public class DisplayMyEvents extends RecyclerView.Adapter<DisplayMyEvents.Produc
         void onItemClick(int position);
     }
 
-    DisplayMyEvents(Context context, List<Events> events) {
+    DisplayMyEventsAdapter(Context context, List<Events> events) {
         this.mCtx = context;
         this.events = events;
     }
@@ -37,15 +37,15 @@ public class DisplayMyEvents extends RecyclerView.Adapter<DisplayMyEvents.Produc
 
     @NonNull
     @Override
-    public DisplayMyEvents.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DisplayMyEventsAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.display_my_events, null);
-        return new DisplayMyEvents.ProductViewHolder(view);
+        return new DisplayMyEventsAdapter.ProductViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DisplayMyEvents.ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DisplayMyEventsAdapter.ProductViewHolder holder, int position) {
         Events event = events.get(position);
         holder.id.setText(event.getId());
         holder.title.setText(event.getTitle());

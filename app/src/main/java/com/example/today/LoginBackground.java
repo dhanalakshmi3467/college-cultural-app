@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -24,13 +23,9 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import javax.xml.transform.Result;
-
-import static android.content.DialogInterface.BUTTON_POSITIVE;
 import static com.example.today.Urls.LOGIN_URL;
 
 /**
@@ -106,7 +101,7 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             LoginResponse loginResponse = objectMapper.readValue(response,LoginResponse.class);
             if (loginResponse.isExists()){
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, Dashboard.class);
                 intent.putExtra("loginResponse", response);
                 context.startActivity(intent);
             }else{
@@ -121,10 +116,10 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
         if ("admin".equals(result.trim())) {
 //            Toast.makeText(context, result , Toast.LENGTH_LONG).show();
             admin = true;
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, Dashboard.class);
             context.startActivity(intent);
         } else if ("user".equals(result.trim())) {
-            Intent intent = new Intent(context, MainActivity.class);
+            Intent intent = new Intent(context, Dashboard.class);
             context.startActivity(intent);
         } else {
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();

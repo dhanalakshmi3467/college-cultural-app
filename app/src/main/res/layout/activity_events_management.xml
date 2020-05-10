@@ -13,10 +13,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         />
-    <Button
-        android:id="@+id/createEventByUser"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="create event">
-    </Button>
+        app:cardCornerRadius="15dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="100dp"
+            android:background="@drawable/home_gradient_maths"
+            android:padding="10dp">
+
+            <ImageView
+                android:maxHeight="90dp"
+                android:src="@drawable/ic_menu_manage"
+                style="@style/homeCardImage"/>
+
+            <TextView
+                android:id="@+id/createEventByUser"
+                android:paddingRight="25dp"
+                android:text="           Create an Event"
+                style="@style/viewParent.headerText.HomeCardTitle" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <!-- <Button
+         android:id="@+id/createEventByUser"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="create event">
+     </Button>-->
 </LinearLayout>

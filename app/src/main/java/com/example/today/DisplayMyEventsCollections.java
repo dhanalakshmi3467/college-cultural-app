@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,7 @@ public class DisplayMyEventsCollections extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_my_events_collections);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         noEventFound = findViewById(R.id.myEventNoEventFound);
 
@@ -38,11 +40,12 @@ public class DisplayMyEventsCollections extends AppCompatActivity {
         eventsRecycleView.setHasFixedSize(true);
         eventsRecycleView.setLayoutManager(new LinearLayoutManager(this));
 
-        loadEvents(MainActivity.LoggedInUserInfo.getEmail());
+        loadEvents(Dashboard.LoggedInUserInfo.getEmail());
     }
+
     public void loadEvents(String email) {
 
-        String url = MY_EVENTS_REGISTERED_URL+ email;
+        String url = MY_EVENTS_REGISTERED_URL + email;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -51,13 +54,13 @@ public class DisplayMyEventsCollections extends AppCompatActivity {
                             ObjectMapper objectMapper = new ObjectMapper();
                             CollectionType typeReference =
                                     TypeFactory.defaultInstance().constructCollectionType(List.class, Events.class);
-                            Log.println(Log.ERROR,"GET_EVENTS", response);
+                            Log.println(Log.ERROR, "GET_EVENTS", response);
                             List<Events> events = objectMapper.readValue(response, typeReference);
-                            if (events.size() == 0){
+                            if (events.size() == 0) {
                                 noEventFound.setVisibility(View.VISIBLE);
-                            }else{
+                            } else {
                                 noEventFound.setVisibility(View.GONE);
-                                DisplayMyEvents adapter = new DisplayMyEvents(DisplayMyEventsCollections.this, events);
+                                DisplayMyEventsAdapter adapter = new DisplayMyEventsAdapter(DisplayMyEventsCollections.this, events);
                                 eventsRecycleView.setAdapter(adapter);
                             }
                         } catch (Exception e) {
@@ -72,5 +75,13 @@ public class DisplayMyEventsCollections extends AppCompatActivity {
                     }
                 });
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DisplayMyEventsCollections.this, Dashboard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

@@ -33,22 +33,14 @@
         </activity>
         <activity android:name=".Register" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Dashboard"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main2Activity"
+            android:name=".DisplayEventTypes"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".accc" />
-        <activity android:name=".Schedule" />
-        <activity android:name=".ScheduleActivity" />
-        <activity android:name=".AnotherActivity" />
-        <activity android:name=".AnotherActivity1" />
-        <activity android:name=".AnotherActivity2" />
-        <activity android:name=".Day1" />
-        <activity android:name=".Day2" />
-        <activity android:name=".Day3" />
         <activity android:name=".Login" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -64,7 +56,6 @@
             android:value="@string/common_google_play_services_install_button" />
         -->
         <activity android:name=".AboutUs" />
-        <activity android:name=".ContactUs" />
         <activity android:name=".developer" />
 
         <meta-data

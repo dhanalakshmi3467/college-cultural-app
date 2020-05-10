@@ -1,8 +1,6 @@
 package com.example.today;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-import java.util.Random;
 
 public class CampusNewsAdapter extends RecyclerView.Adapter<CampusNewsAdapter.ProductViewHolder> {
 
     LinearLayout ll_search;
     private Context mCtx;
-    private List<News_List> productList;
+    private List<NewsList> productList;
 
     //declare interface
     private OnItemClicked onClick;
@@ -32,7 +29,7 @@ public class CampusNewsAdapter extends RecyclerView.Adapter<CampusNewsAdapter.Pr
         void onItemClick(int position);
     }
 
-    public CampusNewsAdapter(Context context, List<News_List> productList) {
+    public CampusNewsAdapter(Context context, List<NewsList> productList) {
         this.mCtx = context;
         this.productList = productList;
     }
@@ -46,7 +43,7 @@ public class CampusNewsAdapter extends RecyclerView.Adapter<CampusNewsAdapter.Pr
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, final int position) {
-        News_List product = productList.get(position);
+        NewsList product = productList.get(position);
 
         //loading the image
         Glide.with(mCtx)

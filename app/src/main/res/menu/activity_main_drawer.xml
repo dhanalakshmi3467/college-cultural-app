@@ -4,33 +4,33 @@
 
     <item
         android:id="@+id/nav_event"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/ic_event"
         android:title="Events" />
     <item
         android:id="@+id/nav_gallery"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/ic_assignment"
         android:title="Departments" />
     <item
         android:id="@+id/nav_schedule"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="Schedule" />
+        android:icon="@drawable/ic_fiber_new"
+        android:title="CampusNews" />
     <item
         android:id="@+id/nav_map"
-        android:icon="@drawable/ic_menu_send"
+        android:icon="@drawable/ic_map"
         android:title="Map" />
 
 
     <item
         android:id="@+id/nav_send"
-        android:icon="@drawable/ic_menu_slideshow"
+        android:icon="@drawable/ic_contact"
         android:title="Contact Us" />
     <item
         android:id="@+id/nav_faqs"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/ic_menu_slideshow"
         android:title="Developers" />
     <item
         android:id="@+id/nav_mybooking"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/ic_save"
         android:title="MyEvents" />
 <item
     android:id="@+id/nav_view"

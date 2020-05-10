@@ -55,6 +55,7 @@ public class DisplayEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_event);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -89,7 +90,7 @@ public class DisplayEvent extends AppCompatActivity {
             public void onClick(View v) {
                 Log.println(Log.ERROR, "DELETE_ME", register.getText().toString());
                 if (REGISTER.equals(register.getText().toString())) {
-                    registerEvent(event.getId(), MainActivity.LoggedInUserInfo.getEmail());
+                    registerEvent(event.getId(), Dashboard.LoggedInUserInfo.getEmail());
                 } else {
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DisplayEvent.this);
                     alertDialog.setTitle("Unregister event");
@@ -98,7 +99,7 @@ public class DisplayEvent extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-                            unRegisterEvent(event.getId(), MainActivity.LoggedInUserInfo.getEmail());
+                            unRegisterEvent(event.getId(), Dashboard.LoggedInUserInfo.getEmail());
                         }
                     });
                     alertDialog.show();
@@ -109,7 +110,7 @@ public class DisplayEvent extends AppCompatActivity {
 
     private void checkIfEventIsBooked() {
 
-        String url = String.format("%s?eventId=%s&userId=%s", IS_EVENT_BOOKED_URL, event.getId(), MainActivity.LoggedInUserInfo.getEmail());
+        String url = String.format("%s?eventId=%s&userId=%s", IS_EVENT_BOOKED_URL, event.getId(), Dashboard.LoggedInUserInfo.getEmail());
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -309,5 +310,20 @@ public class DisplayEvent extends AppCompatActivity {
         }
         Unregister unregister = new Unregister();
         unregister.execute(eventId, userId);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DisplayEvent.this, EventsManagement.class);
+        intent.putExtra("type", event.getType());
+        // int type = Integer.parseInt(event.getText().toString()); ;
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

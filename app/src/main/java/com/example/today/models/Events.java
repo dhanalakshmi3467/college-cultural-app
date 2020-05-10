@@ -11,16 +11,16 @@ public class Events {
     private String imageUrl;
     private String date;
     private String time;
-    private int type;
+    private String type;
     @JsonProperty(value = "created_by")
     private int createdBy;
     private boolean approved;
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

@@ -45,6 +45,7 @@ public class DisplayMyEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_my_event);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -84,7 +85,7 @@ public class DisplayMyEvent extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        unRegisterEvent(event.getId(), MainActivity.LoggedInUserInfo.getEmail());
+                        unRegisterEvent(event.getId(), Dashboard.LoggedInUserInfo.getEmail());
                     }
                 });
                 alertDialog.show();
@@ -188,9 +189,13 @@ public class DisplayMyEvent extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent;
-        intent = new Intent(this, MainActivity.class);
+        intent = new Intent(this, DisplayMyEventsCollections.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
         startActivity(intent);
+    }
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

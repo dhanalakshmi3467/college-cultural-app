@@ -28,6 +28,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 import com.plattysoft.leonids.ParticleSystem;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnTouchListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     GridView grid;
 
     String rigntone;
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         rigntone = sp.getString("ring1", "default ringtone");
         uname = sp.getString("name1", "Guest");
-        //  Toast.makeText(MainActivity.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
+       // MainActivity.LoggedInUserInfo.getUsername();
+         Toast.makeText(MainActivity.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
         showNotification();
 
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Intent i1 = new Intent(MainActivity.this, accc.class);
                     startActivity(i1);
                 } else if (position == 2) {
-                    Intent i1 = new Intent(MainActivity.this, Schedule.class);
+                    Intent i1 = new Intent(MainActivity.this, CampusNews.class);
                     i1.putExtra("extra", 2);
                     startActivity(i1);
                 } else if (position == 3) {
@@ -136,10 +138,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Notification notification = new NotificationCompat.Builder(this)
                 .setTicker("Android")
                 .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                .setContentTitle("SCC App")
+                .setContentTitle("College Cultrual  App")
                 .setSmallIcon(R.drawable.ic_date_range)
                 .setSound(Uri.parse(rigntone))
-                .setContentText("College App Running")
+                .setContentText("Explore the events")
                 .setContentIntent(pi)
                 .setAutoCancel(true)
                 .build();
@@ -177,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return super.onOptionsItemSelected(item);
     }
-    @Override
+  /*  @Override
     public boolean onTouch(final View view, MotionEvent motionEvent) {
         new ParticleSystem(this, 100,R.drawable.star_pink, 1000)
                 .setScaleRange(0.7f,1.3f)
@@ -189,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
+*/
 
     @Override
     public void onBackPressed() {

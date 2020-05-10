@@ -1,6 +1,6 @@
 package com.example.today.models;
 
-import androidx.annotation.NonNull;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Events {
 
@@ -11,6 +11,34 @@ public class Events {
     private String imageUrl;
     private String date;
     private String time;
+    private int type;
+    @JsonProperty(value = "created_by")
+    private int createdBy;
+    private boolean approved;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
 
     public String getId() {
         return id;

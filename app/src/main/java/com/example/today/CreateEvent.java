@@ -38,20 +38,24 @@ import java.util.Locale;
 import static com.example.today.Urls.CREATE_EVENT_URL;
 
 public class CreateEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
     private Button buttonChooseImage;
     private Bitmap bitmap;
     final Calendar myCalendar = Calendar.getInstance();
     private final Calendar calendar = Calendar.getInstance();
     private ImageView image;
-    Spinner eventType;
+    //    Spinner eventType;
     static EditText title, price, description, imageUrl, eventDate, eventTime;
     private static EventType[] eventTypeModels;
+    private static String eventType;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
+        eventType = getIntent().getStringExtra("type");
         title = findViewById(R.id.createEventTitle);
         description = findViewById(R.id.createEventDescription);
         price = findViewById(R.id.createEventPrice);
@@ -100,7 +104,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        eventType = findViewById(R.id.eventType);
+//        eventType = findViewById(R.id.eventType);
 
         try {
             eventTypeModels = new com.example.today.EventType().getEventTypes();
@@ -108,11 +112,11 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
             e.printStackTrace();
         }
 
-        String[] eventTypeList = getEventType();
+       /* String[] eventTypeList = getEventType();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateEvent.this,
                 android.R.layout.simple_spinner_item, eventTypeList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.eventType.setAdapter(adapter);
+        this.eventType.setAdapter(adapter);*/
 
     }
 
@@ -126,7 +130,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         return events;
     }
 
-    private String getEventId(String eventType) {
+    private String getEventTypeId(String eventType) {
         for (EventType eventTypeModel : eventTypeModels) {
             if (eventType.equals(eventTypeModel.getType())) {
                 Log.println(Log.INFO, "GET_EVENT_ID_BY_TYPE", "Event id " + eventTypeModel.getId() + " found for " + eventType);
@@ -173,7 +177,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     public void eventCreate(View view) {
         CreateEventBackground createEventBackground = new CreateEventBackground();
         createEventBackground.execute(title.getText().toString(), description.getText().toString(),
-                price.getText().toString(), getEventId(eventType.getSelectedItem().toString()), eventDate.getText().toString(), eventTime.getText().toString());
+                price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(),MainActivity.LoggedInUserInfo.getUuid());
     }
 
     public class CreateEventBackground extends AsyncTask<String,Void,String> {
@@ -187,7 +191,9 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         protected void onPostExecute(String response) {
             if ("event created".equals(response.trim())) {
                 Toast.makeText(CreateEvent.this, "Event created", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(CreateEvent.this, Main2Activity.class));
+                Intent intent = new Intent(CreateEvent.this,EventsManagement.class);
+                intent.putExtra("type", eventType);
+                startActivity(intent);
             } else {
                 Log.println(Log.ERROR, "Event creation failed", response);
             }
@@ -196,12 +202,15 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         @Override
         protected String doInBackground(String[] params) {
             try {
+                /* createEventBackground.execute(title.getText().toString(), description.getText().toString(),
+                price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(),MainActivity.LoggedInUserInfo.getUuid());*/
                 String title = params[0];
                 String description = params[1];
                 String price = params[2];
                 String type = params[3];
                 String date = params[4];
                 String time = params[5];
+                String createdBy = params[6];
                 URL url = new URL(CREATE_EVENT_URL);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -215,7 +224,8 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                         + URLEncoder.encode("price", "UTF-8") + "=" + URLEncoder.encode(price, "UTF-8") + "&"
                         + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
                         + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&"
-                        + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8");
+                        + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8")+ "&"
+                        + URLEncoder.encode("created_by", "UTF-8") + "=" + URLEncoder.encode(createdBy, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

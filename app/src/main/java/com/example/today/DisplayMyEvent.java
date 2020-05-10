@@ -185,4 +185,12 @@ public class DisplayMyEvent extends AppCompatActivity {
         Unregister unregister = new Unregister(DisplayMyEvent.this, eventId, userId);
         unregister.execute();
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent;
+        intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        finish();
+        startActivity(intent);
+    }
 }

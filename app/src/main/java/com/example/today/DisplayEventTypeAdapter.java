@@ -72,7 +72,7 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, EventsManagement.class);
-                    intent.putExtra("id", id.getText().toString());
+                    intent.putExtra("type", id.getText().toString());
                     context.startActivity(intent);
                 }
             });

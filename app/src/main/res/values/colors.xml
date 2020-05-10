@@ -151,5 +151,13 @@
     <color name="contentTextColor">#020000</color>
     <color name="miniTitleColor">#6F6A6A</color>
     <color name="whiteTextColor">#fff</color>
+
+
+    <!--colors for modern ui-->
+    <color name="primaryTextColor">#2661FA</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--colros for card-->
+    <color name="whiteCardColor">#fff</color>
     
 </resources>

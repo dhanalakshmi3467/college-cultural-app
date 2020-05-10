@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.today.models.Events;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,6 +21,7 @@ public class DisplayMyEvents extends RecyclerView.Adapter<DisplayMyEvents.Produc
     private Context mCtx;
     private List<Events> events;
     private OnItemClicked onClick;
+    private CardView cardview;
     private TextView eventNotRegistered;
 
 
@@ -52,7 +53,7 @@ public class DisplayMyEvents extends RecyclerView.Adapter<DisplayMyEvents.Produc
         holder.time.setText(event.getTime());
 
         holder.id.setVisibility(View.GONE);
-        // setBackGroundColor(position, holder.itemView);
+         //setBackGroundColor(position, holder.itemView);
     }
 
     @Override

@@ -83,27 +83,6 @@
                     android:gravity="center"
                     android:onClick="signUpButton"
                     android:text="register_here" />
-
-                <!-- <Button
-                     android:id="@+id/btnLogin"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="65dp"
-                     android:text="login"
-                     android:onClick="OnLogin"
-                     app:layout_constraintBaseline_toBaselineOf="@+id/btnReg"
-                     app:layout_constraintStart_toStartOf="parent"
-                     tools:ignore="OnClick" />
-
-                 <Button
-                     android:id="@+id/btnReg"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginStart="62dp"
-                     android:layout_marginTop="108dp"
-                     android:text="reg"
-                     app:layout_constraintStart_toEndOf="@+id/btnLogin"
-                     app:layout_constraintTop_toBottomOf="@+id/txtPass" />-->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

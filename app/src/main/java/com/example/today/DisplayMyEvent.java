@@ -113,7 +113,7 @@ public class DisplayMyEvent extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
                 alertDialog = new AlertDialog.Builder(DisplayMyEvent.this).create();
-                loadingDialog = ProgressDialog.show(DisplayMyEvent.this, "Please Wait", "Registering...");
+                loadingDialog = ProgressDialog.show(DisplayMyEvent.this, "Please Wait", "Unregistering...");
             }
 
             @Override

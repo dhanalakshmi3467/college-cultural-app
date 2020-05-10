@@ -317,7 +317,6 @@ public class DisplayEvent extends AppCompatActivity {
         super.onBackPressed();
         Intent intent = new Intent(DisplayEvent.this, EventsManagement.class);
         intent.putExtra("type", event.getType());
-        // int type = Integer.parseInt(event.getText().toString()); ;
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

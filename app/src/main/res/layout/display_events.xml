@@ -12,9 +12,10 @@
     app:contentPadding="5dp">
 
     <RelativeLayout
+        android:id="@+id/displyEventsAdopter"
         android:layout_width="wrap_content"
         android:layout_height="170dp"
-        android:background="@drawable/home_gradient"
+        android:background="@drawable/home_gradient_color3"
         android:minHeight="100dp"
         android:padding="10dp">
 
@@ -80,30 +81,3 @@
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/displayEventId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/displayEventTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/displayEventPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>-->

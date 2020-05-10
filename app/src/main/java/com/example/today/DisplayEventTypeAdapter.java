@@ -2,13 +2,14 @@ package com.example.today;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.today.models.EventType;
@@ -46,7 +47,7 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
         holder.id.setText(eventType.getId());
         holder.type.setText(eventType.getType());
         holder.id.setVisibility(View.GONE);
-        //  setBackGroundColor(position, holder.itemView);
+        setBackGroundColor(position, holder.relativeLayout);
 
     }
 
@@ -62,9 +63,11 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
         TextView id, type;
+        RelativeLayout relativeLayout;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
+            relativeLayout = itemView.findViewById(R.id.displayEventTypeLayoutAdaptor);
             id = itemView.findViewById(R.id.listEventId);
             type = itemView.findViewById(R.id.listEventType);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -78,19 +81,17 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
             });
         }
     }
-}
-   /* private void setBackGroundColor(int position, View view) {
-//        FF4081
+
+    private void setBackGroundColor(int position, RelativeLayout relativeLayout) {
         if (position % 4 == 0) {
-            view.setBackgroundColor(Color.parseColor("#CCFFCC"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color1));
         } else if (position % 4 == 1) {
-            view.setBackgroundColor(Color.parseColor("#99FF66"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color2));
         } else if (position % 4 == 2) {
-            view.setBackgroundColor(Color.parseColor("#FF9966"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color3));
         } else {
-            view.setBackgroundColor(Color.parseColor("#669900"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color4));
         }
     }
 }
-*/
 

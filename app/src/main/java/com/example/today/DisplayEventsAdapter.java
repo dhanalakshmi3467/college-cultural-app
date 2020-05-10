@@ -6,9 +6,11 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
@@ -39,7 +41,6 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
     public DisplayEventsAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.display_events, null);
-
         return new DisplayEventsAdapter.ProductViewHolder(view);
 
 
@@ -54,7 +55,7 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
         holder.time.setText(event.getTime());
 
         holder.id.setVisibility(View.GONE);
-       // setBackGroundColor(position, holder.itemView);
+        setBackGroundColor(position, holder.relativeLayout);
     }
 
     @Override
@@ -64,9 +65,11 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
         TextView id, title, date, time;
+        RelativeLayout relativeLayout;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
+            relativeLayout = itemView.findViewById(R.id.displyEventsAdopter);
             id = itemView.findViewById(R.id.displayEventId);
             title = itemView.findViewById(R.id.displayEventTitle);
             date = itemView.findViewById(R.id.displayEventDate);
@@ -83,18 +86,18 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
         }
     }
 
-    private void setBackGroundColor(int position, View view) {
-//        FF4081
+    private void setBackGroundColor(int position, RelativeLayout relativeLayout) {
         if (position % 4 == 0) {
-            view.setBackgroundColor(Color.parseColor("#CCFFCC"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color1));
         } else if (position % 4 == 1) {
-            view.setBackgroundColor(Color.parseColor("#99FF66"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color2));
         } else if (position % 4 == 2) {
-            view.setBackgroundColor(Color.parseColor("#FF9966"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color3));
         } else {
-            view.setBackgroundColor(Color.parseColor("#669900"));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color4));
         }
     }
+
     private String getEvent(String id) {
         ObjectMapper objectMapper = new ObjectMapper();
         for (Events event : events) {

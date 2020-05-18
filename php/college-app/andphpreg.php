@@ -13,9 +13,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $user=$_POST['username'];
 	$pass=$_POST['password'];
 	$email=$_POST['email'];
+	$admin=$_POST['admin'];
 	$email_query="SELECT `email` FROM `users` WHERE username='$email'";
 	
-	$query="INSERT INTO `users`(`register_number`,`email`,`username`,`password`) VALUES('$reg_num','$email','$user','$pass')";
+	$query="INSERT INTO `users`(`register_number`,`email`,`username`,`password`,`admin`) VALUES('$reg_num','$email','$user','$pass','$admin')";
 	if(mysqli_query($conn, $query)){
 		echo("registration succesfully completed");
 	}else {

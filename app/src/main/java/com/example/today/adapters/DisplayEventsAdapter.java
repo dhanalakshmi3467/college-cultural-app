@@ -1,11 +1,16 @@
-package com.example.today;
+package com.example.today.adapters;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +19,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.today.Dashboard;
+import com.example.today.DeleteEvent;
+import com.example.today.DisplayEvent;
+import com.example.today.EditActivity;
+import com.example.today.R;
 import com.example.today.models.Events;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,7 +40,7 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
         void onItemClick(int position);
     }
 
-    DisplayEventsAdapter(Context context, List<Events> events) {
+    public DisplayEventsAdapter(Context context, List<Events> events) {
         this.mCtx = context;
         this.events = events;
     }
@@ -74,16 +84,58 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
             title = itemView.findViewById(R.id.displayEventTitle);
             date = itemView.findViewById(R.id.displayEventDate);
             time = itemView.findViewById(R.id.displayEventTime);
-            itemView.setOnClickListener(new View.OnClickListener() {
+           /* itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DisplayEvent.class);
-                    intent.putExtra("response", getEvent(id.getText().toString()));
-                    context.startActivity(intent);
+
+                }
+            });*/
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    if (Dashboard.LoggedInUserInfo.isAdmin() || isCreatedBySameUser(id.getText().toString(), Dashboard.LoggedInUserInfo.getUuid())) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
+                        ProgressDialog progressDialog = new ProgressDialog(mCtx);
+                        CharSequence[] dialogItem = {"View", "Edit", "Delete"};
+//                    builder.setTitle("User Options");
+                        builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//TODO if user selects View then call viewEvent(view); in the case condition
+                                switch (which) {
+                                    case 0:
+                                        viewEvent(id.getText().toString());
+                                        break;
+                                    case 1:
+                                        Intent intent = new Intent(mCtx, EditActivity.class);
+                                        intent.putExtra("response", getEvent(id.getText().toString()));
+                                        mCtx.startActivity(intent);
+                                        break;
+                                    case 2:
+                                        String eventId = id.getText().toString();
+                                        DeleteEvent deleteEvent = new DeleteEvent(mCtx,getEventTypeById(eventId));
+                                        deleteEvent.execute(eventId);
+                                        break;
+
+
+                                }
+                            }
+                        });
+                        builder.create().show();
+                    } else {
+                        viewEvent(id.getText().toString());
+                    }
                 }
             });
         }
+    }
+
+    private void viewEvent(String eventId) {
+//        Context context = view.getContext();
+        Intent intent = new Intent(mCtx, DisplayEvent.class);
+        intent.putExtra("response", getEvent(eventId));
+        mCtx.startActivity(intent);
     }
 
     private void setBackGroundColor(int position, RelativeLayout relativeLayout) {
@@ -107,6 +159,24 @@ public class DisplayEventsAdapter extends RecyclerView.Adapter<DisplayEventsAdap
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        }
+        return null;
+    }
+
+    private boolean isCreatedBySameUser(String eventId, String userId) {
+        for (Events event : events) {
+            if (eventId.equals(event.getId()) && userId.equals(Integer.toString(event.getCreatedBy()))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String getEventTypeById(String id) {
+        for (Events event : events) {
+            if (event.getId().equals(id)) {
+                return event.getType();
             }
         }
         return null;

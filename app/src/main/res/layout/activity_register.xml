@@ -1,6 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containersup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_gradient_color1"
+    android:orientation="vertical"
+    tools:context=".Register"
+    android:padding="10dp">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/signedup"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lblHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/bad_script"
+            android:text="         Registration"
+            android:textColor="#fff"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtRegNum"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="number"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:fontFamily="@font/boogaloo"
+            android:imeOptions="actionNext"
+            android:hint="Register Number"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:imeOptions="actionNext"
+            android:fontFamily="@font/boogaloo"
+
+            android:hint="UserName"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+
+            android:hint="Email"
+            android:fontFamily="@font/boogaloo"
+            android:imeOptions="actionNext"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPass"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:imeOptions="actionDone"
+
+            android:hint="Password"
+            android:fontFamily="@font/boogaloo"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/Gold"
+            android:text="Sign up"
+            android:fontFamily="@font/boogaloo"
+            android:onClick="signUpButton"
+            android:textColor="#fff" />
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/Gold"
+            android:text="Already have an Account?         Sign in"
+            android:textSize="15dp"
+            android:fontFamily="@font/boogaloo"
+            android:onClick="signInButton"
+            android:textColor="#fff" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+<!--
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,9 +130,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,15 +155,16 @@
                     android:layout_height="wrap_content"
                     android:background="#f5f5f5"
                     android:orientation="vertical">
+
                     <EditText
                         android:id="@+id/txtRegNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
                         android:hint="@string/reg_no"
-                        android:textColor="@color/Red"
                         android:inputType="text"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:textColor="@color/Red" />
 
                     <EditText
                         android:id="@+id/txtName"
@@ -51,18 +173,19 @@
                         android:layout_margin="15dp"
                         android:hint="@string/User_name"
                         android:inputType="text"
-                        android:textColor="@color/Red"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:textColor="@color/Red" />
 
                     <EditText
                         android:id="@+id/txtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
+                        android:fontFamily="@font/copse"
                         android:hint="@string/email"
-                        android:textColor="@color/Red"
                         android:inputType="textEmailAddress"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:textColor="@color/Red" />
 
                     <EditText
                         android:id="@+id/txtPass"
@@ -70,11 +193,11 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
                         android:hint="@string/password"
-                        android:textColor="@color/Red"
                         android:inputType="textPassword"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:textColor="@color/Red" />
 
-                    <!--<EditText
+                    &lt;!&ndash;<EditText
                         android:id="@+id/fullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -90,7 +213,7 @@
                         android:layout_margin="15dp"
                         android:hint="@string/full_name"
                         android:inputType="text"
-                        android:padding="15dp" />-->
+                        android:padding="15dp" />&ndash;&gt;
 
                 </LinearLayout>
 
@@ -99,18 +222,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:padding="15dp"
                     android:onClick="signUpButton"
-                    android:text="@string/register"/>
+                    android:padding="15dp"
+                    android:text="@string/register" />
 
                 <Button
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    android:onClick="signInButton"
                     android:gravity="center"
-                    android:text="@string/login_btn"/>
+                    android:onClick="signInButton"
+                    android:text="@string/login_btn" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -124,102 +247,10 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
 
 
 
 
-
-<!--Another designs-->
-<!--
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Register">
-
-    <EditText
-        android:id="@+id/txtRegNum"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="205dp"
-        android:ems="10"
-        android:hint="regno"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtPass"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="156dp"
-        android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegNum" />
-
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="179dp"
-        android:ems="10"
-        android:hint="email"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/txtPass"
-        app:layout_constraintStart_toStartOf="@+id/txtPass"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/btnReg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:onClick="signUpButton"
-        android:text="Register"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="213dp"
-        android:onClick="signInButton"
-        android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPass" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
--->

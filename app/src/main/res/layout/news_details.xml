@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        app:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_gradient_color3">
+
+            <ImageView
+                android:id="@+id/newsIamge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/western" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/newsId"
+        android:layout_width="421dp"
+        android:layout_height="72dp"
+        android:fontFamily="@font/boogaloo"
+        android:gravity="center"
+        android:text="Event Id:   "
+        android:textColor="@color/DarkRed"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:fontFamily="@font/boogaloo"
+        android:text="Mono Acting"
+        android:textAlignment="center"
+        android:textColor="@color/Gray"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/newsDesc"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:fontFamily="@font/boogaloo"
+        android:text="National  Degree College"
+        android:textAlignment="center"
+        android:textColor="@color/DarkGreen"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/newsby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/boogaloo"
+        android:text="National "
+        android:textAlignment="center"
+        android:textColor="@color/DarkGreen"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/newsDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/boogaloo"
+        android:text="National  Degree College"
+        android:textAlignment="center"
+        android:textColor="@color/DarkGreen"
+        android:textSize="24sp" />
+
+</LinearLayout>

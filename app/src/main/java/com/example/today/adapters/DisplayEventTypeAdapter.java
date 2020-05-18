@@ -1,4 +1,4 @@
-package com.example.today;
+package com.example.today.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.today.EventsManagement;
+import com.example.today.R;
 import com.example.today.models.EventType;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
         void onItemClick(int position);
     }
 
-    DisplayEventTypeAdapter(Context context, List<EventType> eventTypes) {
+    public DisplayEventTypeAdapter(Context context, List<EventType> eventTypes) {
         this.mCtx = context;
         this.eventTypes = eventTypes;
     }
@@ -41,8 +43,7 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-//        TODO
-//        https://stackoverflow.com/questions/40692214/changing-background-color-of-selected-item-in-recyclerview
+
         EventType eventType = eventTypes.get(position);
         holder.id.setText(eventType.getId());
         holder.type.setText(eventType.getType());

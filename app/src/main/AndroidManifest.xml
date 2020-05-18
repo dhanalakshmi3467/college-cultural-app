@@ -14,15 +14,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CampusNews"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <!--<activity android:name=".SplashScreen"></activity>-->
+        <activity android:name=".CampusNews" />
         <activity android:name=".DisplayMyEvent" />
         <activity android:name=".DisplayMyEventsCollections" />
         <activity android:name=".DisplayEvent" />
         <activity android:name=".EventsManagement" />
         <activity android:name=".CreateEvent" />
         <activity
-            android:name=".Splashscreen"
+            android:name=".SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Shelves">
             <intent-filter>
@@ -32,16 +34,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity
+        <activity android:name=".Dashboard"/>
+        <activity android:name="DisplayEventTypes"/>
+     <!--   <activity
             android:name=".Dashboard"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DisplayEventTypes"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity android:name=".accc" />
         <activity android:name=".Login" />
+        <activity android:name=".NewsDetails" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -57,6 +62,7 @@
         -->
         <activity android:name=".AboutUs" />
         <activity android:name=".developer" />
+        <activity android:name=".EditActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

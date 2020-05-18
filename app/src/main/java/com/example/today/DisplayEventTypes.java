@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.today.adapters.DisplayEventTypeAdapter;
 import com.example.today.models.EventType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -41,7 +42,7 @@ public class DisplayEventTypes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        Button createEvent = findViewById(R.id.createEvent);
 /*
@@ -63,13 +64,13 @@ public class DisplayEventTypes extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        setupToolbar();
+//        setupToolbar();
 
 //        setupViewPager();
 
         setupCollapsingToolbar();
 
-        deleteMe();
+//        deleteMe();
 
         getEventType();
     }
@@ -94,7 +95,7 @@ public class DisplayEventTypes extends AppCompatActivity {
     private void setupToolbar() {
         toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /*private void setupViewPager(ViewPager viewPager) {
@@ -150,8 +151,9 @@ public class DisplayEventTypes extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
+/*
 //TODO  Putti Don't remove this code
+
     private void deleteMe() {
         com.example.today.EventType eventType = new com.example.today.EventType();
         try {
@@ -163,7 +165,7 @@ public class DisplayEventTypes extends AppCompatActivity {
         for (EventType events : eventTypeModel) {
             Log.println(Log.DEBUG, "GET_EVENT_TYPE", events.getId() + "\t" + events.getType());
         }
-    }
+    }*/
 
     private void getEventType() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_EVENT_TYPE_URL,

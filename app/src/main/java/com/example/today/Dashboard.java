@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 
 import android.view.MenuItem;
@@ -38,18 +39,16 @@ import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     GridView grid;
 
     String rigntone;
     NotificationManager notificationManager;
     String uname;
 
-    public Typeface customtypeface;
-    long backPressedTime=0;
+    long backPressedTime = 0;
     private ObjectMapper objectMapper = new ObjectMapper();
     public static LoginResponse LoggedInUserInfo;
-
 
 
     @Override
@@ -62,35 +61,31 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         //preference Notification
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Dashboard.this);
         rigntone = sp.getString("ring1", "default ringtone");
-        uname = sp.getString("name1", "User");
+        uname = sp.getString("name1","User" );
         //Dashboard.LoggedInUserInfo.getUuid();
 
-         Toast.makeText(Dashboard.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(Dashboard.this, "Logged in as : " + uname, Toast.LENGTH_SHORT).show();
         showNotification();
 
 
         Intent intent = getIntent();
-        if(intent.hasExtra("loginResponse")){
+        if (intent.hasExtra("loginResponse")) {
             String loginResponse = intent.getStringExtra("loginResponse");
-            try{
-                LoggedInUserInfo = objectMapper.readValue(loginResponse,LoginResponse.class);
-            }catch (Exception e){
+            try {
+                LoggedInUserInfo = objectMapper.readValue(loginResponse, LoginResponse.class);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
 
         // Intent it=new Intent(this,NotifyMain.class);
         grid = (GridView) findViewById(R.id.gridViw);
         grid.setAdapter(new NavAdapter(this));
 
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -118,9 +113,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                     Intent i1 = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
                     startActivity(i1);
                 } else if (position == 4) {
-                    Intent i1 = new Intent(Dashboard.this, Cart.class);
-                    startActivity(i1);
-                } else if (position == 5) {
                     Intent i1 = new Intent(Dashboard.this, developer.class);
                     startActivity(i1);
                 }
@@ -129,6 +121,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         });
 
     }
+
     public void showNotification() {
         PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, Dashboard.class), 0);
         Resources r = getResources();
@@ -159,6 +152,12 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         startActivity(i1);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -169,26 +168,14 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            Intent i = new Intent(getApplicationContext(), AboutUs.class);
             startActivity(i);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-  /*  @Override
-    public boolean onTouch(final View view, MotionEvent motionEvent) {
-        new ParticleSystem(this, 100,R.drawable.star_pink, 1000)
-                .setScaleRange(0.7f,1.3f)
-                .setAcceleration(0.00013f, 90)
-                .setSpeedByComponentsRange(0f, 0f, 0.05f, 0.1f)
-                .setFadeOut(400, new AccelerateInterpolator())
-                .emitWithGravity(view, Gravity.TOP,30,300);
 
-        return true;
-    }
-
-*/
 
     @Override
     public void onBackPressed() {
@@ -230,9 +217,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         } else if (id == R.id.nav_faqs) {
             Intent i = new Intent(Dashboard.this, developer.class);
             startActivity(i);
-        } else if (id == R.id.nav_send) {
-            Intent i = new Intent(Dashboard.this, Cart.class);
-            startActivity(i);
+
         } else if (id == R.id.nav_view) {
             Intent i = new Intent(Dashboard.this, Login.class);
             startActivity(i);
@@ -246,7 +231,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 }
-
 
 
 class items {

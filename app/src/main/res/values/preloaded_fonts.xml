@@ -2,5 +2,8 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arapey_italic</item>
+        <item>@font/bad_script</item>
+        <item>@font/boogaloo</item>
+        <item>@font/copse</item>
     </array>
 </resources>

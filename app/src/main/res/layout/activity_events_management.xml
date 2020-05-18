@@ -38,7 +38,7 @@
                     <ImageView
                         style="@style/homeCardImage"
                         android:maxHeight="90dp"
-                        android:src="@drawable/ic_menu_manage" />
+                        android:src="@drawable/ic_arrow" />
 
                     <TextView
                         android:id="@+id/createEventByUser"

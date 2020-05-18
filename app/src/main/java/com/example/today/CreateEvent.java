@@ -103,12 +103,14 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         });
 
 //        eventType = findViewById(R.id.eventType);
+/*
 
         try {
             eventTypeModels = new com.example.today.EventType().getEventTypes();
         } catch (Exception e) {
             e.printStackTrace();
         }
+*/
 
        /* String[] eventTypeList = getEventType();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateEvent.this,
@@ -118,7 +120,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    private String[] getEventType() {
+  /*  private String[] getEventType() {
         String[] events = new String[eventTypeModels.length];
         int i = 0;
         for (EventType eventTypeModel : eventTypeModels) {
@@ -138,7 +140,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         Log.println(Log.ERROR, "GET_EVENT_ID_BY_TYPE", "Unable to find event id using event type");
         return null;
     }
-
+*/
 
    /* private void initializeImage() {
         buttonChooseImage = (Button) findViewById(R.id.choose_image_button);

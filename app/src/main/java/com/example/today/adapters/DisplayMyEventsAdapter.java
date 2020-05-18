@@ -1,8 +1,10 @@
-package com.example.today;
+package com.example.today.adapters;
 
+import androidx.appcompat.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.today.DisplayMyEvent;
+import com.example.today.R;
 import com.example.today.models.Events;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -31,7 +36,7 @@ public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEvents
         void onItemClick(int position);
     }
 
-    DisplayMyEventsAdapter(Context context, List<Events> events) {
+    public DisplayMyEventsAdapter(Context context, List<Events> events) {
         this.mCtx = context;
         this.events = events;
     }
@@ -54,7 +59,7 @@ public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEvents
         holder.date.setText(event.getDate());
         holder.time.setText(event.getTime());
         holder.id.setVisibility(View.GONE);
-         setBackGroundColor(position, holder.relativeLayout);
+        setBackGroundColor(position, holder.relativeLayout);
     }
 
     @Override
@@ -65,6 +70,7 @@ public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEvents
     class ProductViewHolder extends RecyclerView.ViewHolder {
         TextView id, title, date, time, eventNotRegistered;
         RelativeLayout relativeLayout;
+
         public ProductViewHolder(View itemView) {
             super(itemView);
             relativeLayout = itemView.findViewById(R.id.displayMyEventsAdopter);
@@ -79,6 +85,23 @@ public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEvents
                     Intent intent = new Intent(context, DisplayMyEvent.class);
                     intent.putExtra("response", getEvent(id.getText().toString()));
                     context.startActivity(intent);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+                    CharSequence[] dialogItem = {"View Data", "Edit Data", "Delete Data"};
+                    builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            builder.create();
+                    return false;
                 }
             });
         }

@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="AppTheme.Shelves" >
-     <!--   <item name="android:windowBackground">@drawable/download</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -116,5 +115,10 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:layout_alignParentTop">true</item>
+
+
+<!--Activity Register-->
+
+
     </style>
 </resources>

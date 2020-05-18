@@ -6,10 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.widget.Toast;
-
-//import com.example.newlogin.Homepage;
-
 import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,9 +26,6 @@ import java.net.URLEncoder;
 
 import static com.example.today.Urls.LOGIN_URL;
 
-/**
- * Created by Programming Knowledge on 1/5/2016.
- */
 public class LoginBackground extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;

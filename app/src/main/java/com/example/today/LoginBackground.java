@@ -6,10 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.widget.Toast;
-
-//import com.example.newlogin.Homepage;
-
 import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,9 +26,6 @@ import java.net.URLEncoder;
 
 import static com.example.today.Urls.LOGIN_URL;
 
-/**
- * Created by Programming Knowledge on 1/5/2016.
- */
 public class LoginBackground extends AsyncTask<String,Void,String> {
     Context context;
     AlertDialog alertDialog;
@@ -49,7 +44,7 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
 
         if (type.equals("Login")) {
             try {
-                String user_name = params[1];
+                String email = params[1];
                 String password = params[2];
                 URL url = new URL(LOGIN_URL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -59,7 +54,7 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
 //                httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("user_name", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8") + "&"
+                String post_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&"
                         + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -99,12 +94,12 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            LoginResponse loginResponse = objectMapper.readValue(response,LoginResponse.class);
-            if (loginResponse.isExists()){
+            LoginResponse loginResponse = objectMapper.readValue(response, LoginResponse.class);
+            if (loginResponse.isExists()) {
                 Intent intent = new Intent(context, Dashboard.class);
                 intent.putExtra("loginResponse", response);
                 context.startActivity(intent);
-            }else{
+            } else {
                 Toast.makeText(context, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
             }
 
@@ -112,24 +107,11 @@ public class LoginBackground extends AsyncTask<String,Void,String> {
             e.printStackTrace();
             Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
         }
-        /*
-        if ("admin".equals(result.trim())) {
-//            Toast.makeText(context, result , Toast.LENGTH_LONG).show();
-            admin = true;
-            Intent intent = new Intent(context, Dashboard.class);
-            context.startActivity(intent);
-        } else if ("user".equals(result.trim())) {
-            Intent intent = new Intent(context, Dashboard.class);
-            context.startActivity(intent);
-        } else {
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        }*/
         loadingDialog.dismiss();
     }
 
     @Override
     protected void onProgressUpdate(Void... values) {
-
         super.onProgressUpdate(values);
     }
 }

@@ -9,9 +9,11 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 
 import android.view.MenuItem;
@@ -30,6 +32,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -38,18 +41,156 @@ import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Dashboard extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+    String rigntone;
+    NotificationManager notificationManager;
+    String uname;
+
+    long backPressedTime = 0;
+    private ObjectMapper objectMapper = new ObjectMapper();
+    public static LoginResponse LoggedInUserInfo;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        //Notification process
+        //preference Notification
+        //preference Notification
+       /* SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Dashboard.this);
+        rigntone = sp.getString("ring1", "default ringtone");
+        uname = sp.getString("name1", "User");*/
+        //Dashboard.LoggedInUserInfo.getUuid();
+
+        //  Toast.makeText(Dashboard.this, "Logged in as : " + uname, Toast.LENGTH_SHORT).show();
+    /*    showNotification();*/
+
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("loginResponse")) {
+            String loginResponse = intent.getStringExtra("loginResponse");
+            try {
+                LoggedInUserInfo = objectMapper.readValue(loginResponse, LoginResponse.class);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //handling floating action menu
+        findViewById(R.id.floatingActionButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
+
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_event) {
+            Intent i = new Intent(Dashboard.this, DisplayEventTypes.class);
+            startActivity(i);
+            // Handle the camera action
+        } else if (id == R.id.nav_news) {
+            Intent i = new Intent(Dashboard.this, CampusNews.class);
+
+            i.putExtra("extra", 2);
+            startActivity(i);
+        } else if (id == R.id.nav_map) {
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
+            startActivity(i);
+        } else if (id == R.id.nav_view) {
+            Intent i = new Intent(Dashboard.this, Login.class);
+            startActivity(i);
+        } else if (id == R.id.nav_mybooking) {
+            Intent i = new Intent(Dashboard.this, DisplayMyEventsCollections.class);
+            startActivity(i);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+
+
+    public void Events(View view) {
+        Intent intent = new Intent(this, DisplayEventTypes.class);
+        startActivity(intent);
+    }
+
+    public void MyEvents(View view) {
+        Intent intent = new Intent(this, DisplayMyEventsCollections.class);
+        startActivity(intent);
+    }
+
+
+    public void Sponsers(View view) {
+        Intent intent = new Intent(this, SplashScreen.class);
+        startActivity(intent);
+    }
+
+    public void Map(View view) {
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
+        startActivity(intent);
+    }
+
+    public void AboutUs(View view) {
+        Intent intent = new Intent(this, AboutUs.class);
+        startActivity(intent);
+    }
+
+    public void CampusNews(View view) {
+        Intent intent = new Intent(this, CampusNews.class);
+        startActivity(intent);
+    }
+}
+
+/*
+public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     GridView grid;
 
     String rigntone;
     NotificationManager notificationManager;
     String uname;
 
-    public Typeface customtypeface;
-    long backPressedTime=0;
+    long backPressedTime = 0;
     private ObjectMapper objectMapper = new ObjectMapper();
     public static LoginResponse LoggedInUserInfo;
-
 
 
     @Override
@@ -65,32 +206,30 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         uname = sp.getString("name1", "User");
         //Dashboard.LoggedInUserInfo.getUuid();
 
-         Toast.makeText(Dashboard.this,"Logged in as : "+ uname,Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(Dashboard.this, "Logged in as : " + uname, Toast.LENGTH_SHORT).show();
         showNotification();
 
 
         Intent intent = getIntent();
-        if(intent.hasExtra("loginResponse")){
+        if (intent.hasExtra("loginResponse")) {
             String loginResponse = intent.getStringExtra("loginResponse");
-            try{
-                LoggedInUserInfo = objectMapper.readValue(loginResponse,LoginResponse.class);
-            }catch (Exception e){
+            try {
+                LoggedInUserInfo = objectMapper.readValue(loginResponse, LoginResponse.class);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        // Intent it=new Intent(this,NotifyMain.class);
-        grid = (GridView) findViewById(R.id.gridViw);
-        grid.setAdapter(new NavAdapter(this));
 
+        // Intent it=new Intent(this,NotifyMain.class);
+    */
+/*    grid = (GridView) findViewById(R.id.gridViw);
+        grid.setAdapter(new NavAdapter(this));*//*
 
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,14 +240,15 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        grid.setOnItemClickListener(new OnItemClickListener() {
+    */
+/*  grid.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     Intent i = new Intent(Dashboard.this, DisplayEventTypes.class);
                     startActivity(i);
                 } else if (position == 1) {
-                    Intent i1 = new Intent(Dashboard.this, accc.class);
+                    Intent i1 = new Intent(Dashboard.this, DisplayMyEventsCollections.class);
                     startActivity(i1);
                 } else if (position == 2) {
                     Intent i1 = new Intent(Dashboard.this, CampusNews.class);
@@ -117,18 +257,14 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 } else if (position == 3) {
                     Intent i1 = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
                     startActivity(i1);
-                } else if (position == 4) {
-                    Intent i1 = new Intent(Dashboard.this, Cart.class);
-                    startActivity(i1);
-                } else if (position == 5) {
-                    Intent i1 = new Intent(Dashboard.this, developer.class);
-                    startActivity(i1);
                 }
 
             }
-        });
+        });*//*
+
 
     }
+
     public void showNotification() {
         PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, Dashboard.class), 0);
         Resources r = getResources();
@@ -159,6 +295,12 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         startActivity(i1);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -169,26 +311,14 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            Intent i = new Intent(getApplicationContext(), AboutUs.class);
             startActivity(i);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-  /*  @Override
-    public boolean onTouch(final View view, MotionEvent motionEvent) {
-        new ParticleSystem(this, 100,R.drawable.star_pink, 1000)
-                .setScaleRange(0.7f,1.3f)
-                .setAcceleration(0.00013f, 90)
-                .setSpeedByComponentsRange(0f, 0f, 0.05f, 0.1f)
-                .setFadeOut(400, new AccelerateInterpolator())
-                .emitWithGravity(view, Gravity.TOP,30,300);
 
-        return true;
-    }
-
-*/
 
     @Override
     public void onBackPressed() {
@@ -214,24 +344,13 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             Intent i = new Intent(Dashboard.this, DisplayEventTypes.class);
             startActivity(i);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Intent i = new Intent(Dashboard.this, accc.class);
-            startActivity(i);
-
-        } else if (id == R.id.nav_schedule) {
+        } else if (id == R.id.nav_news) {
             Intent i = new Intent(Dashboard.this, CampusNews.class);
 
             i.putExtra("extra", 2);
             startActivity(i);
         } else if (id == R.id.nav_map) {
             Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
-            startActivity(i);
-
-        } else if (id == R.id.nav_faqs) {
-            Intent i = new Intent(Dashboard.this, developer.class);
-            startActivity(i);
-        } else if (id == R.id.nav_send) {
-            Intent i = new Intent(Dashboard.this, Cart.class);
             startActivity(i);
         } else if (id == R.id.nav_view) {
             Intent i = new Intent(Dashboard.this, Login.class);
@@ -246,10 +365,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         return true;
     }
 }
+*/
 
 
-
-class items {
+/*class items {
     int images;
     String itemName;
 
@@ -257,9 +376,9 @@ class items {
         this.images = images;
         this.itemName = itemName;
     }
-}
+}*/
 
-class NavAdapter extends BaseAdapter {
+/*class NavAdapter extends BaseAdapter {
     ArrayList<items> list;
     Context context;
 
@@ -269,8 +388,8 @@ class NavAdapter extends BaseAdapter {
         Resources res = context.getResources();
         String[] temp = res.getStringArray(R.array.abcd);
         int[] images = {R.drawable.western, R.drawable.unnamed, R.drawable.eye,
-                R.drawable.girly, R.drawable.cultu, R.drawable.color};
-        for (int i = 0; i < 6; i++) {
+                R.drawable.girly, R.drawable.cultu};
+        for (int i = 0; i < 5; i++) {
             items tempItems = new items(images[i], temp[i]);
             list.add(tempItems);
         }
@@ -319,5 +438,6 @@ class NavAdapter extends BaseAdapter {
         holder.images.setImageResource(tempo.images);
         holder.texts.setText(tempo.itemName);
         return row;
-    }
-}
+        }
+    }*/
+

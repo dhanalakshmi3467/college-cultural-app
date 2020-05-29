@@ -12,10 +12,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -35,6 +33,7 @@ public class RegisterBackground extends AsyncTask<String,String,String> {
         String username = String[2];
         String password = String[3];
         String email = String[4];
+        String admin = String[5];
 
         if (type.equals("reg")) {
             try {
@@ -51,8 +50,10 @@ public class RegisterBackground extends AsyncTask<String,String,String> {
                     String insert_data = URLEncoder.encode("register_number", "UTF-8") + "=" + URLEncoder.encode(register_number, "UTF-8") + "&"
                             + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") + "&"
                             + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8") + "&"
-                            + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
+                            + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") + "&"
+                            + URLEncoder.encode("admin", "UTF-8") + "=" + URLEncoder.encode(admin, "UTF-8");
                     bufferedWriter.write(insert_data);
+                    // intent.putExtra("type", admin.getText().toString())
                     if (null != bufferedWriter) {
                         bufferedWriter.flush();
                         bufferedWriter.close();
@@ -100,7 +101,7 @@ public class RegisterBackground extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String s) {
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-        if ("registration succesfully completed".equals(s.trim())){
+        if ("registration succesfully completed".equals(s.trim())) {
             Intent intent = new Intent(context, Login.class);
             context.startActivity(intent);
 

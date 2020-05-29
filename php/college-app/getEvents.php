@@ -47,7 +47,7 @@
 		if($approved == 1){
 			$temp['approved'] = True; 
 		}else{
-			$temp['time'] = False; 
+			$temp['approved'] = False; 
 		}
 		
 		array_push($events, $temp);

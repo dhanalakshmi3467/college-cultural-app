@@ -2,5 +2,11 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arapey_italic</item>
+        <item>@font/atomic_age</item>
+        <item>@font/bad_script</item>
+        <item>@font/boogaloo</item>
+        <item>@font/copse</item>
+        <item>@font/engagement</item>
+        <item>@font/radley_italic</item>
     </array>
 </resources>

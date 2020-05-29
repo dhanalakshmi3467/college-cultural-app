@@ -20,4 +20,10 @@
     <dimen name="newsMoreTextSize">12sp</dimen>
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
+
+
+
+    <dimen name="event_desciption_padding_bottom">12dp</dimen>
+    <dimen name="event_description_padding">10dp</dimen>
+    <dimen name="event_description">20dp</dimen>
 </resources>

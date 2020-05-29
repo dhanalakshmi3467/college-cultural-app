@@ -83,6 +83,11 @@ public class DisplayEvent extends AppCompatActivity {
 
         id.setVisibility(View.GONE);
 
+
+        if (event.getCreatedBy() == Integer.parseInt(Dashboard.LoggedInUserInfo.getUuid()) && !Dashboard.LoggedInUserInfo.isAdmin()) {
+            register.setVisibility(View.GONE);
+        }
+
         checkIfEventIsBooked();
 
         register.setOnClickListener(new View.OnClickListener() {

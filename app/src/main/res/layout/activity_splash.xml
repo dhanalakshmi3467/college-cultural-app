@@ -6,16 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:background="@color/colorAccent"
+    android:background="@drawable/backc"
     android:gravity="center"
-    tools:context=".Splashscreen">
+    tools:context=".SplashScreen">
 
+   <!-- <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="279dp"
+        android:layout_height="250dp"
+        android:background="@drawable/flower"
+
+        />-->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:src="@drawable/flower"
-        />
+        android:layout_width="194dp"
+        android:layout_height="194dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/flower" />
 
     <TextView
         android:id="@+id/textView"
@@ -32,16 +39,15 @@
   <!--  <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="Android Studio App Development"
+        android:layout_height="32dp"
+        android:layout_marginTop="10dp"
+        android:text="The National College Basavanagudi"
         android:textAlignment="center"
         android:textColor="@color/Black"
-        android:layout_marginTop="10dp"
-        />
+        android:textSize="15dp" />-->
 
--->
 </LinearLayout>
+
 
 
 

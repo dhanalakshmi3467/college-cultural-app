@@ -1,9 +1,9 @@
 <?php
 require "conn.php";
-$user_name = $_POST["user_name"];
+$email = $_POST["email"];
 $user_pass = $_POST["password"];
 
-$stmt = $conn->prepare("select uuid, register_number, email, username, admin from users where username='$user_name' and password='$user_pass';");
+$stmt = $conn->prepare("select uuid, register_number, email, username, admin from users where email='$email' and password='$user_pass';");
 if (!$stmt->execute()){
 	$user['exists'] = False;
 	$user['message'] = "Error: (" . $stmt->errno . ") " . $stmt->error;
@@ -22,7 +22,6 @@ if (!$stmt->execute()){
 			}else {
 				$user['admin'] = False;
 			}
-			
 		}
 	}else{
 		$user['exists'] = False;
@@ -30,31 +29,3 @@ if (!$stmt->execute()){
 	}
 	echo json_encode($user,JSON_PRETTY_PRINT);
 }
-
-/*
-$mysql_qry = "select uuid, register_number, email, username, admin from users where username='$user_name' and password='$user_pass';";
-$result = mysqli_query($conn,$mysql_qry);
-if(mysqli_num_rows($result) > 0)
-{
-	$admin = $result->fetch_object()->admin; 
-	if($admin == 1){
-		echo "admin";
-	}else {
-		echo "user";
-	}
-	$result->bind_result($uuid, $register_number, email, username, admin);
-	
-	while($result->fetch()){
-		$user['uuid'] = $uuid;
-		$user['register_number'] = $register_number;
-		$user['email'] = $email;
-		$user['username'] = $username;
-		$user['admin'] = $admin;
-	}
-	echo json_encode($user);
-}
-else {
-		echo "Login failed. Please provide valid credentials";
-}*/
-?>
-

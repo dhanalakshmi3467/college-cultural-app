@@ -16,6 +16,7 @@ public class Events {
     private int createdBy;
     private boolean approved;
 
+
     public String getType() {
         return type;
     }

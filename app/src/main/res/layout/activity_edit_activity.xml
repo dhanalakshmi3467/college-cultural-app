@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".EditActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Details"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/edtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Title"
+        android:inputType="textShortMessage"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/edtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Title"
+        android:inputType="textShortMessage"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Description"
+        android:inputType="textLongMessage"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edtPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Price"
+        android:inputType="number"
+        android:textSize="20sp" />
+
+    <!--<DatePicker
+        android:id="@+id/createEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+
+
+    <EditText
+        android:id="@+id/edtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:digits="0123456789-"
+        android:gravity="center"
+        android:hint="Event date"
+        android:imeOptions="actionNext"
+        android:inputType="date"
+        android:textColor="#483d8b" />
+
+
+    <EditText
+        android:id="@+id/edtTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="Start time"
+        android:inputType="time" />
+
+    <!-- <TimePicker
+         android:id="@+id/createEventTime"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+
+    <!-- <ImageView
+         android:id="@+id/createEventImageUrl"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+    <!--
+        <ImageView
+            android:id="@+id/festival_image"
+            android:layout_width="309dp"
+            android:layout_height="180dp"
+            android:layout_weight="1"
+            android:padding="1dp" />-->
+
+    <!--<Button
+        android:id="@+id/choose_image_button"
+        android:layout_width="135dp"
+        android:layout_height="69dp"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:text="Upload image" />-->
+
+
+    <!-- <Spinner
+         android:id="@+id/eventType"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@android:drawable/btn_dropdown"
+         android:spinnerMode="dropdown"
+         android:gravity="center"/>-->
+
+    <Button
+        android:id="@+id/createEventButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Gold"
+        android:onClick="updateEvent"
+        android:text="update" />
+</LinearLayout>

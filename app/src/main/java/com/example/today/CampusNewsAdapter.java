@@ -1,6 +1,7 @@
 package com.example.today;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,15 +80,15 @@ public class CampusNewsAdapter extends RecyclerView.Adapter<CampusNewsAdapter.Pr
 
             imageView = itemView.findViewById(R.id.imageView);
 
-            /*imageView.setOnClickListener(new View.OnClickListener() {
+            imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
-                    Intent intent = new Intent(context, AnotherActivity.class);
-                    intent.putExtra("id", eventId.getText().toString());
+                    Intent intent = new Intent(context, NewsDetails.class);
+                   intent.putExtra("id",txtId.getText().toString());
                     context.startActivity(intent);
                 }
-            });*/
+            });
         }
     }
 

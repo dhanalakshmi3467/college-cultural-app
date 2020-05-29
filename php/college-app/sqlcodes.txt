@@ -1,0 +1,26 @@
+SELECT * FROM dhanu as d INNER JOIN users as u ON u.uuid = d.created_by;
+
+
+SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON u.admin ='1'  OR u.email  ='syeda@gmail.com'
+
+
+SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON d.created_by =  u.uuid AND u.admin =1
+
+
+SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND u.admin =1 UNION SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND u.email ='syeda@gmail.com'
+
+
+
+
+SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND u.admin =1 UNION SELECT DISTINCT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND u.email ='syeda@gmail.com' AND u.admin=0;
+
+
+
+SELECT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND d.approved = 1 UNION SELECT * FROM dhanu as d INNER JOIN users as u ON d.created_by = u.uuid AND u.email ='divya@gmail.com' AND d.approved = 0
+
+Working
+
+SELECT * FROM events as d INNER JOIN users as u ON d.created_by = u.uuid AND d.approved = 1 UNION SELECT * FROM events as d INNER JOIN users as u ON d.created_by = u.uuid AND u.email ='syeda@gmail.com' AND d.approved = 0
+
+
+SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND e.approved = 1 UNION SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND u.email ='syeda@gmail.com' AND e.approved = 0

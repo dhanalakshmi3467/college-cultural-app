@@ -16,23 +16,13 @@ define('DB_HOST', 'localhost');
 
 if (isset($_GET['id'])) {
 $id = $_GET['id'];
-	$stmt = $conn->prepare("select *from campus_news where id=$id");
+	$stmt = $conn->prepare("SELECT id, title, news_by, info, date, image from campus_news where id=$id");
 	$stmt->execute();
-	//binding results to the query 
+	//binding results to the query; 
 	$stmt->bind_result($id, $title, $news_by, $info, $date, $image);
 	
 	$products = array(); 
 	
-	//traversing through all the result 
-	/*while($stmt->fetch()){
-		$temp = array();
-		$temp['id'] = $id; 
-		$temp['title'] = $title; 
-		$temp['shortdesc'] = $shortdesc; 
-		$temp['time'] = $time; 
-		$temp['contactus'] = $contactus; 
-		array_push($products, $temp);
-	}*/
 	$temp = array();
 	while($stmt->fetch()){
 		$temp['id'] = $id; 
@@ -46,13 +36,8 @@ $id = $_GET['id'];
 	}
 	
 	//displaying the result in json format 
-	echo json_encode($temp);
+	echo json_encode($temp,JSON_PRETTY_PRINT);
 }
-	?>
-
-
-
-
 /* define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
@@ -95,3 +80,6 @@ $id = $_GET['id'];
 	echo json_encode($temp);
 }*/
 	?>
+
+
+

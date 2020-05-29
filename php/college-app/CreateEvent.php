@@ -24,15 +24,15 @@
      $sql = "INSERT INTO `events`(`title`,`shortdesc`,`price`,`type`,`date`,`time`,`created_by`,`approved`) VALUES ('$title','$description','$price','$type','$date','$time',$created_by,$approved)";
 	 
      
-	 //echo "$title $description $price $type ";
-	 
+	 //echo "$title $description $price $type "; 
+	
      $result = mysqli_query($conn,$sql);
      
      if($result){
          echo "event created";  
      }
      else{
-		 echo("Nata Error : " . $conn -> error);
+		 echo("Nata Error : " . $conn -> error); 
      }
      mysqli_close($conn);
 	 

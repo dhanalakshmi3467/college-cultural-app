@@ -7,16 +7,13 @@
     <string name="action_settings">Settings</string>
     <string-array name="abcd">
         <item>Events</item>
-        <item>Departments</item>
+        <item>My Events</item>
         <item>CampusNews</item>
         <item>Map</item>
         <item>Contact us</item>
-        <item>Developers</item>
     </string-array>
-    <string-array name="exotics">
 
-    </string-array>
- <!--   <string name="title_activity_events">EventsActivity</string>
+    <!--   <string name="title_activity_events">EventsActivity</string>
 
     <string name="title_activity_main2">Events</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -26,22 +23,35 @@
     </string>-->
     <string name="title_activity_maps">Map</string>
 
-    <string name="registration">Registration</string>
+  <!--  <string name="registration">Registration</string>
     <string name="login_btn">login</string>
     <string name="register">register</string>
     <string name="email">email</string>
     <string name="User_name">username</string>
     <string name="password">password</string>
+
     <string name="reg_no">Register number</string>
+    -->
+
     <string name="no_reg_event_found"> No Registered event found.</string>
-    <!--Another register  and login details-->
-    <string name="register1">REGISTER</string>
-    <string name="login_email_hint">Email</string>
-    <string name="login_password_hint">Password</string>
-    <string name="signup_login_hint">Already have an account? Sign In</string>
-    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
-    <string name="login_name_hint">Name</string>
-    <string name="login_mobile_number_hint">Mobile Number</string>
+    <string name="no_events">no data is loaded connected to the surver</string>
+<!--
+//contacts string-->
+    <string-array name="contact">
+        <item>Suresh.G              : 9790498687</item>
+        <item>Sheik Abdul Azeem.A   : 9952358777</item>
+        <item>Kishore Kumar.B       : 9500898882</item>
+        <item>Reventh.D             : 9677544872</item>
+        <item>Soorya.R.T            : 8220311165</item>
+        <item>Vimalraj.S            : 9600661998</item>
+        <item>Rajkumar.K            : 7092205315</item>
+        <item>Deepan.P              : 9489687612</item>
+    </string-array>
+
+    <string-array name="acccontact">
+        <item>Vinoth Kumar          : 7598123558</item>
+        <item>Agathiswaren          : 8903968358</item>
+    </string-array>
 
 
 </resources>

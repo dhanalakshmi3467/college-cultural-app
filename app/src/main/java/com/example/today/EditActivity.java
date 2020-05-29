@@ -95,11 +95,11 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
         eventTime.setText(event.getTime());
 // imageUrl.setText(event.getImageUrl());
 //        initializeImage();
-
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -108,13 +108,19 @@ public class EditActivity extends AppCompatActivity implements AdapterView.OnIte
                 eventDate.setText(sdf.format(myCalendar.getTime()));
             }
         };
-
         eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(EditActivity.this, date, myCalendar
+
+               /* new DatePickerDialog(CreateEvent.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();*/
+                String sDate = Calendar.YEAR + "/" + Calendar.MONTH + "/" + Calendar.DAY_OF_MONTH;
+                eventDate.setText(sDate);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(EditActivity.this, date, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);  //date is dateSetListener as per your code in question
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+
             }
         });
 

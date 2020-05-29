@@ -3,6 +3,7 @@ package com.example.today;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -30,7 +31,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.time.Year;
+import java.time.YearMonth;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import static com.example.today.Urls.CREATE_EVENT_URL;
@@ -41,7 +45,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     private Bitmap bitmap;*/
     final Calendar myCalendar = Calendar.getInstance();
     private final Calendar calendar = Calendar.getInstance();
- //   private ImageView image;
+    //   private ImageView image;
     //    Spinner eventType;
     static EditText title, price, description, imageUrl, eventDate, eventTime;
     private static EventType[] eventTypeModels;
@@ -59,13 +63,13 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         price = findViewById(R.id.createEventPrice);
         eventDate = findViewById(R.id.createEventDate);
         eventTime = findViewById(R.id.StartTime);
-
 //        initializeImage();
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -74,16 +78,67 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 eventDate.setText(sdf.format(myCalendar.getTime()));
             }
         };
-
         eventDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(CreateEvent.this, date, myCalendar
+
+               /* new DatePickerDialog(CreateEvent.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();*/
+                String sDate = Calendar.YEAR + "/" + Calendar.MONTH + "/" + Calendar.DAY_OF_MONTH;
+                eventDate.setText(sDate);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CreateEvent.this, date, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);  //date is dateSetListener as per your code in question
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+
             }
         });
+    /*  final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, final int year, final int monthOfYear,
+                                  final int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                Calendar calendar = Calendar.getInstance();
+               *//* int yearv = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);*//*
+                eventDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                                CreateEvent.this, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                String sDate = dayOfMonth + "/" + month + "/" + year;
+                                eventDate.setText(sDate);
+                            }
+                        }, year, monthOfYear, dayOfMonth
+                        );
+                        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                        datePickerDialog.show();
+                    }
+                });*/
 
+
+
+
+
+
+   /* private void initializeImage() {
+        buttonChooseImage = (Button) findViewById(R.id.choose_image_button);
+        image = (ImageView) findViewById(R.id.createEventImageUrl);
+        buttonChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 555);
+            }
+        });
+    }*/
         eventTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,60 +156,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 mTimePicker.show();
             }
         });
-
-//        eventType = findViewById(R.id.eventType);
-/*
-
-        try {
-            eventTypeModels = new com.example.today.EventType().getEventTypes();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-*/
-
-       /* String[] eventTypeList = getEventType();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateEvent.this,
-                android.R.layout.simple_spinner_item, eventTypeList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.eventType.setAdapter(adapter);*/
-
     }
-
-  /*  private String[] getEventType() {
-        String[] events = new String[eventTypeModels.length];
-        int i = 0;
-        for (EventType eventTypeModel : eventTypeModels) {
-            events[i] = eventTypeModel.getType();
-            i++;
-        }
-        return events;
-    }
-
-    private String getEventTypeId(String eventType) {
-        for (EventType eventTypeModel : eventTypeModels) {
-            if (eventType.equals(eventTypeModel.getType())) {
-                Log.println(Log.INFO, "GET_EVENT_ID_BY_TYPE", "Event id " + eventTypeModel.getId() + " found for " + eventType);
-                return eventTypeModel.getId();
-            }
-        }
-        Log.println(Log.ERROR, "GET_EVENT_ID_BY_TYPE", "Unable to find event id using event type");
-        return null;
-    }
-*/
-
-   /* private void initializeImage() {
-        buttonChooseImage = (Button) findViewById(R.id.choose_image_button);
-        image = (ImageView) findViewById(R.id.createEventImageUrl);
-        buttonChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 555);
-            }
-        });
-    }*/
 
     private String convertDate(int input) {
         if (input >= 10) {
@@ -180,6 +182,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                 price.getText().toString(), eventType, eventDate.getText().toString(), eventTime.getText().toString(), Dashboard.LoggedInUserInfo.getUuid());
     }
 
+
     public class CreateEventBackground extends AsyncTask<String,Void,String> {
 
         @Override
@@ -191,7 +194,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
         protected void onPostExecute(String response) {
             if ("event created".equals(response.trim())) {
                 Toast.makeText(CreateEvent.this, "Event created", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CreateEvent.this,EventsManagement.class);
+                Intent intent = new Intent(CreateEvent.this, EventsManagement.class);
                 intent.putExtra("type", eventType);
                 startActivity(intent);
             } else {
@@ -222,7 +225,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
                         + URLEncoder.encode("price", "UTF-8") + "=" + URLEncoder.encode(price, "UTF-8") + "&"
                         + URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8") + "&"
                         + URLEncoder.encode("date", "UTF-8") + "=" + URLEncoder.encode(date, "UTF-8") + "&"
-                        + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8")+ "&"
+                        + URLEncoder.encode("time", "UTF-8") + "=" + URLEncoder.encode(time, "UTF-8") + "&"
                         + URLEncoder.encode("created_by", "UTF-8") + "=" + URLEncoder.encode(createdBy, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -251,7 +254,7 @@ public class CreateEvent extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(CreateEvent.this,EventsManagement.class);
+        Intent intent = new Intent(CreateEvent.this, EventsManagement.class);
         intent.putExtra("type", eventType);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

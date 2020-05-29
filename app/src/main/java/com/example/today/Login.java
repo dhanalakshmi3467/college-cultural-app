@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class Login extends AppCompatActivity {
     EditText email, password;
-
+    long backPressedTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +30,18 @@ public class Login extends AppCompatActivity {
             register.execute(type, username, password);
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        long t = System.currentTimeMillis();
+        if (t - backPressedTime > 2000) {    // 2 secs
+            backPressedTime = t;
+            //Toast.makeText(this, "Press one more time to exit", Toast.LENGTH_SHORT).show();
+            moveTaskToBack(true);
+        } else {    // this guy is serious
+            // clean up
+            moveTaskToBack(true);
+        }
+    }
     public void signUpButton(View view) {
         startActivity(new Intent(Login.this, Register.class));
     }

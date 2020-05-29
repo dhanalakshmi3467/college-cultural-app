@@ -7,8 +7,8 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="210dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
@@ -25,7 +25,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
-                android:src="@drawable/western" />
+                android:src="@drawable/eventa" />
 
         </LinearLayout>
 
@@ -37,9 +37,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/boogaloo"
         android:gravity="center"
-        android:text="Event Id:   "
+        android:text="Event Id:"
         android:textColor="@color/DarkRed"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/eventDetailTitle"
@@ -81,7 +82,7 @@
             android:layout_width="218dp"
             android:layout_height="47dp"
             android:fontFamily="@font/boogaloo"
-            android:text="Sat Sept 15 2020 18:00:00"
+            android:text="Sat Sept 15 2020"
             android:textAlignment="center"
             android:textColor="@color/OrangeRed"
             android:textSize="24sp" />
@@ -89,47 +90,56 @@
         <TextView
             android:id="@+id/eventDetailTime"
             android:layout_width="195dp"
-            android:layout_height="36dp"
+            android:layout_height="match_parent"
             android:fontFamily="@font/boogaloo"
             android:text="Time"
+            android:textAlignment="center"
+            android:textColor="@color/OrangeRed"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="218dp"
+            android:layout_height="47dp"
+            android:fontFamily="@font/boogaloo"
+            android:text="Price"
+            android:textAlignment="center"
+            android:textColor="@color/Gray"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/eventDetailPrice"
+            android:layout_width="195dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/boogaloo"
+            android:text="Amount"
             android:textAlignment="center"
             android:textColor="@color/Gray"
             android:textSize="24sp" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textAlignment="center"
-        android:fontFamily="@font/boogaloo"
-        android:textColor="@color/Gray"
-        android:textSize="24sp"/>
-    <TextView
-        android:id="@+id/eventDetailPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/boogaloo"
-        android:text="Amount"
-        android:textAlignment="center"
-        android:textColor="@color/Gray"
-        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/eventDetailDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="123dp"
         android:fontFamily="@font/boogaloo"
-        android:text="Come...immersive yourself into the Magical Fete with the state of the art perfomances and celebrations"
+        android:text="Come...immersive yourself into the Magical Fete with \n the state of the art perfomances and celebrations ehjfrwe\n
+rwjhytruje rerutg brrhtr ru4t 4ut45 iu45t 4 45ui4t i \n 45ut 45 tu5t458 tui4t ui45thk45ht"
         android:textAlignment="center"
         android:textColor="@color/Black"
-        android:textSize="24sp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/registerEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Gold"
+        android:background="@drawable/login_btn"
         android:onClick="FreeEntry"
         android:text="Free Entry" />
 
@@ -140,7 +150,8 @@
         android:text=""
         android:textColor="@color/Orange"
         android:textSize="20dp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:visibility="gone" />
 
     <!-- <Button
          android:id="@+id/registerEvent1"

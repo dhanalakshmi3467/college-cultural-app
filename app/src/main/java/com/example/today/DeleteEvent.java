@@ -78,7 +78,7 @@ public class DeleteEvent extends AsyncTask<String,Void,String> {
             return result;
 
         } catch (Exception e) {
-            Log.println(Log.ERROR, "CREATE_EVENT", e.getLocalizedMessage());
+            Log.println(Log.ERROR, "DELETE_EVENT", e.getLocalizedMessage());
         }
         return null;
     }

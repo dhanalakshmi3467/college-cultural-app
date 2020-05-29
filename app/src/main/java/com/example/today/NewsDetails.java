@@ -38,10 +38,6 @@ public class NewsDetails extends AppCompatActivity {
     ImageView imageView;
 
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +51,15 @@ public class NewsDetails extends AppCompatActivity {
 
         txtId = findViewById(R.id.newsId);
         title = findViewById(R.id.newsTitle);
-        info = findViewById(R.id.newsDesc);
         news_by = findViewById(R.id.newsby);
+        info = findViewById(R.id.newsDesc);
         date = findViewById(R.id.newsDate);
-        imageView = findViewById(R.id.newsIamge);
+        imageView = findViewById(R.id.ImageView);
+        txtId.setVisibility(View.GONE);
 
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main, menu);
@@ -84,33 +81,33 @@ public class NewsDetails extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     public void loadEventDetails(String id) {
 
-        String url = "http://192.168.29.214/newsdetails.php?id=" + id;
+        String url = NEWS_DETAILS_URL + id;
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject product = new JSONObject(response);
-                            Log.println(Log.INFO, "Event response", product.toString());
+                            JSONObject newsdata = new JSONObject(response);
+                            Log.println(Log.INFO, "newsresponse", newsdata.toString());
 
-                            event = new NewsList(product.getInt("id"),
-                                    product.getString("title"),
-                                    product.getString("info"),
-                                    product.getString("date"),
-                                    product.getString("news_by"),
-                                    product.getString("Image")
-                            );
+                            event = new NewsList(newsdata.getInt("id"),
+                                    newsdata.getString("title"),
+                                    newsdata.getString("news_by"),
+                                    newsdata.getString("info"),
+                                    newsdata.getString("date"),
+                                    newsdata.getString("image"));
 
 
                             txtId.setText("Event Id: " + String.valueOf(event.getId()));
                             title.setText("title: " + String.valueOf(event.getTitle()));
-                            info.setText("info: " + String.valueOf(event.getInfo()));
+
                             date.setText("date: " + String.valueOf(event.getDate()));
                             news_by.setText("news_by: " + String.valueOf(event.getNews_by()));
+                            info.setText("info: " + String.valueOf(event.getInfo()));
 
                             try {
 //                                Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(event.getImage()).getContent());
@@ -140,6 +137,10 @@ public class NewsDetails extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
 }
 

@@ -10,7 +10,7 @@ public class Validation {
     //nata u can change this whenever u want
     //standord mail = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\[A-Za-z]{2,})$";
     private static final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z-0-9-]+(\\.[A-Za-z]{2,})$";//*(\\[A-Za-z]{2,})$";
-    // private static final String PHONE_REGEX = "^[0-9]{10}";
+    private static final String PHONE_REGEX = "^[0-9]{10}";
     private static final String PASSWORD_REGEX = "^[a-zA-Z0-9*]{8,15}";
     private static final String USER_NAME = "^[A-Za-z0-9.*]{4,15}";
 

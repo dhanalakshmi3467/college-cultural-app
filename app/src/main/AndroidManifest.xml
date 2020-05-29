@@ -16,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <!--<activity android:name=".SplashScreen"></activity>-->
+
+        <activity
+            android:name=".Login"
+            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
         <activity android:name=".CampusNews" />
         <activity android:name=".DisplayMyEvent" />
         <activity android:name=".DisplayMyEventsCollections" />
@@ -33,36 +36,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register" />
-        <activity android:name=".Dashboard"/>
-        <activity android:name="DisplayEventTypes"/>
-     <!--   <activity
-            android:name=".Dashboard"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DisplayEventTypes"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />-->
-        <activity android:name=".accc" />
-        <activity android:name=".Login" />
+            android:name=".Register"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+
+        <activity
+            android:name=".Dashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NewsDetails" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
+        <activity android:name=".DisplayEventTypes" />
+
+
+
         <!--
  <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/common_google_play_services_install_button" />
         -->
         <activity android:name=".AboutUs" />
-        <activity android:name=".developer" />
-        <activity android:name=".EditActivity"/>
+        <activity android:name=".EditActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

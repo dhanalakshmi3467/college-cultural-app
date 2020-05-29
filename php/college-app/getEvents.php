@@ -22,7 +22,7 @@
 	
 	//creating a query
 	//$stmt = $conn->prepare("SELECT id, title, shortdesc, price, image, date, time  FROM events where type ='$type';");
-	$stmt = $conn->prepare("SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND e.approved = 1 AND type ='$type' AND date >= DATE(NOW()) UNION SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND u.email ='$email' AND e.approved = 0  AND date >= DATE(NOW()) AND type ='$type'");
+	$stmt = $conn->prepare("SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND e.approved = 1 AND type ='$type' UNION SELECT e.id, e.title, e.shortdesc, e.date, e.time, e.price, e.image, e.type, e.created_by, e.approved FROM events as e INNER JOIN users as u ON e.created_by = u.uuid AND u.email ='$email' AND e.approved = 0  AND type ='$type'");
 
 	$stmt->execute();
 	

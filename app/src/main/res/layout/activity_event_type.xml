@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:showIn="@layout/activity_main2"
-    tools:context=".DisplayEventTypes">
+    tools:context=".Events.DisplayEventTypes">
 
     <TextView
         android:id="@+id/myEventNoEventFound"
@@ -15,6 +15,7 @@
         android:text="@string/no_events"
         android:textSize="25sp"
         android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventsType"
         android:layout_width="match_parent"

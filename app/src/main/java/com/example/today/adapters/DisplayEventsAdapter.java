@@ -6,11 +6,9 @@ import android.content.Context;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,9 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.today.Dashboard;
-import com.example.today.DeleteEvent;
-import com.example.today.DisplayEvent;
-import com.example.today.EditActivity;
+import com.example.today.Events.DeleteEvent;
+import com.example.today.Events.DisplayEvent;
+import com.example.today.Events.EditActivity;
 import com.example.today.R;
 import com.example.today.models.Events;
 import com.fasterxml.jackson.databind.ObjectMapper;

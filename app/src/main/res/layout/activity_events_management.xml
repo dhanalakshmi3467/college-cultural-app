@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backe"
     android:orientation="vertical"
-    tools:context=".EventsManagement">
+    tools:context=".Events.EventsManagement">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,28 +26,37 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="15dp"
-                app:cardPreventCornerOverlap="true">
+                android:layout_margin="20dp"
+                app:cardCornerRadius="5dp"
+
+                app:cardBackgroundColor="#00ffffff"
+                app:cardPreventCornerOverlap="true"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="0dp">
+
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/home_gradient_color1"
+                    android:background="@drawable/home_gradient_color3"
                     android:minHeight="100dp"
                     android:padding="10dp">
 
-                    <ImageView
-                        style="@style/homeCardImage"
+                   <!-- <ImageView
+                        android:layout_toRightOf="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:maxHeight="90dp"
                         android:src="@drawable/ic_arrow" />
-
+-->
                     <TextView
                         android:id="@+id/createEventByUser"
-                        style="@style/viewParent.headerText.HomeCardTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="30dp"
                         android:text="Create an Event"
                         android:textAlignment="center" />
 

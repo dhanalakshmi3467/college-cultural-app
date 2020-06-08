@@ -33,7 +33,7 @@
     <item name="colorControlActivated">#FFCC00</item>
     </style>
     <!--designs login_bkogin and register-->
-    <style name="parent">
+  <!--  <style name="parent">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -76,10 +76,10 @@
     </style>
 
     <style name="loginButton" parent="viewParent">
-      <!--  <item name="android:background">@drawable/login_button_bk</item>-->
+      &lt;!&ndash;  <item name="android:background">@drawable/login_button_bk</item>&ndash;&gt;
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
-    </style>
+    </style>-->
 
 
     <!--<style name="viewParent">
@@ -91,7 +91,7 @@
         <item name="android:layout_height">match_parent</item>
     </style>-->
 
-    <style name="parent.contentLayout">
+  <!--  <style name="parent.contentLayout">
         <item name="android:background">@color/contentBodyColor</item>
         <item name="android:padding">@dimen/normalPadding</item>
     </style>
@@ -125,10 +125,14 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:layout_alignParentTop">true</item>
+    </style>-->
+
+<!--Rating Bar-->
+        <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar.Small">
+            <item name="colorAccent">#6200ea</item>
+            <item name="android:colorControlNormal">#f9a825</item>
+        </style>
 
 
-<!--Activity Register-->
 
-
-    </style>
 </resources>

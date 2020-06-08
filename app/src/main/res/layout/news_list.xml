@@ -1,69 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_weight="7"
     android:background="@android:color/transparent"
     android:descendantFocusability="blocksDescendants"
     android:orientation="horizontal"
-    android:layout_weight="7"
     android:padding="8dp">
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="4dp">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="70dp"
-            android:layout_height="50dp"
-            />
+            android:layout_height="50dp" />
     </LinearLayout>
-
 
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="7"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/eventId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fhdfufeh"
-            android:visibility="gone"/>
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#000"
-
-            android:shadowRadius="1.0"
-            android:textColor="#666666"
-            android:textSize="17sp"
             android:layout_marginBottom="5dp"
+
+            android:ellipsize="end"
             android:maxLines="2"
             android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:text="This is news title"/>
+            android:shadowColor="#000"
+            android:shadowRadius="1.0"
+            android:text="This is news title"
+            android:textColor="#666666"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textViewInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#777777"
-            android:textSize="16sp"
+            android:ellipsize="end"
             android:maxLines="2"
             android:minLines="2"
             android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:text="This is news description bla bla bla..."/>
-
+            android:text="This is news description bla bla bla..."
+            android:textColor="#777777"
+            android:textSize="16sp" />
 
 
         <LinearLayout
@@ -77,11 +74,11 @@
                 android:layout_width="156dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textViewNews"
-                    android:layout_width="333dp"
+                    android:layout_width="141dp"
                     android:layout_height="wrap_content"
                     android:text="News Author"
                     android:textColor="#42A5F5"
@@ -89,11 +86,10 @@
 
                 <TextView
                     android:id="@+id/textViewDate"
-                    android:layout_width="117dp"
+                    android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:text="date">
+                    android:text="date" />
 
-                </TextView>
 
             </LinearLayout>
 
@@ -101,79 +97,123 @@
         </LinearLayout>
 
 
-
     </LinearLayout>
 
 
-
-</LinearLayout>
-
+</LinearLayout>-->
 
 
-<!--
-<LinearLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="5dp"
-    android:padding="8dp"
-    android:id="@+id/covertId"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardBackgroundColor="#00ffffff"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="5dp"
+    app:cardElevation="8dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/download" />
+    <RelativeLayout
+        android:layout_width="420dp"
+        android:layout_height="152dp"
+        android:background="@drawable/back1"
+        android:padding="10dp">
 
-    <LinearLayout
-        android:layout_width="394dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:orientation="vertical">
-
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@drawable/splashh"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/eventId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Naruto: Shippuuden"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:fontFamily="@font/copse"
+            android:text="id "
+            android:textColor="@color/Red"
+            android:textSize="12dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animation | Drama | Adventure"
-            android:textSize="25sp" />
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:fontFamily="@font/copse"
+            android:text="Dhanalakshmi S"
+            android:textColor="@color/colorBack"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="73dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTitle"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:fontFamily="@font/copse"
+            android:text="putti S"
+            android:textColor="@color/colorBack"
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/textViewNews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Studio"
-            android:textSize="20sp" />
+            android:layout_below="@id/textViewTitle"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:fontFamily="@font/copse"
+            android:text="Dhanalakshmi S"
+            android:textColor="@color/Blue"
+            android:textSize="12dp" />
+
+
+        <!-- <TextView
+        android:id="@+id/ms_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ms_title"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="16dp"
+        android:onClick="EventsShow"
+        android:layout_toRightOf="@id/ms_image"
+        android:background="@color/PaleTurquoise"
+        android:text="Register"
+        android:textColor="@color/contentTextColor"
+        android:textSize="12dp">
+
+    </TextView>-->
+
         <TextView
             android:id="@+id/textViewInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Studio"
-            android:textSize="20sp" />
-        <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Studio"
-            android:textSize="20sp" />
+            android:layout_width="273dp"
+            android:layout_height="83dp"
+            android:layout_below="@id/textViewNews"
+            android:layout_marginTop="-16dp"
+            android:layout_toRightOf="@id/imageView1"
+            android:fontFamily="@font/copse"
+            android:padding="10dp"
+            android:text="mjhdsfbjmdsdfnhd jkjfhrkj hfjk kjwdrfhkjew jfhrj kjdjfh kjhdkfjhdfnd jfhdkj fjdf jhdfsjhd  fhhf jhdf jhsdfgmsd dhf
+fjsd hfsdbfjsd jhdsfh jdf hdsjf"
+            android:textColor="@color/DarkBlue"
+            android:textSize="15dp" />
 
-    </LinearLayout>
 
-</LinearLayout>
--->
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CampusNews">
+    android:background="@color/SkyBlue"
+    tools:context=".activities.CampusNews">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/news_recycle"

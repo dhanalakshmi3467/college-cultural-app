@@ -2,9 +2,6 @@ package com.example.today.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EventType {
 
     @JsonProperty(value = "id")
@@ -26,5 +23,28 @@ public class EventType {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public static class MostViewedHelperClass {
+        int image;
+        String title, desc;
+        public MostViewedHelperClass(int image, String title,String desc)
+        {
+            this.title = title;
+            this.image = image;
+            this.desc = desc;
+        }
+
+        public int getImage() {
+            return image;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
     }
 }

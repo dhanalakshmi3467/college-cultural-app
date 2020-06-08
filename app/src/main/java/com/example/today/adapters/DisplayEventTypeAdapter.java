@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.today.EventsManagement;
+import com.example.today.Events.EventsManagement;
 import com.example.today.R;
 import com.example.today.models.EventType;
 
@@ -85,14 +85,13 @@ public class DisplayEventTypeAdapter extends RecyclerView.Adapter<DisplayEventTy
 
     private void setBackGroundColor(int position, RelativeLayout relativeLayout) {
         if (position % 4 == 0) {
-            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color1));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color7));
         } else if (position % 4 == 1) {
             relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color2));
-        } else if (position % 4 == 2) {
-            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color3));
         } else {
-            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color4));
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color1));
         }
     }
+
 }
 

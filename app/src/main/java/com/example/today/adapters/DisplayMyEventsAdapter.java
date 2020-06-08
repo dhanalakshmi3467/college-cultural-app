@@ -16,7 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.today.DisplayMyEvent;
+import com.example.today.MyEvents.DisplayMyEvent;
 import com.example.today.R;
 import com.example.today.models.Events;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -114,8 +114,17 @@ public class DisplayMyEventsAdapter extends RecyclerView.Adapter<DisplayMyEvents
             relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color2));
         } else if (position % 4 == 2) {
             relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color3));
-        } else {
+        } else if (position % 4 == 3){
             relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color4));
+        }
+        else if (position % 4 == 4){
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color5));
+        }
+        else if (position % 4 == 5){
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color_6));
+        }
+        else {
+            relativeLayout.setBackground(ContextCompat.getDrawable(relativeLayout.getContext(), R.drawable.home_gradient_color7));
         }
     }
 

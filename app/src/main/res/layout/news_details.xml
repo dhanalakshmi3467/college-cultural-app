@@ -15,9 +15,9 @@
         app:cardCornerRadius="12dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="372dp"
             android:layout_height="match_parent"
-            android:background="@drawable/home_gradient_color3">
+            android:background="@drawable/home_gradient_color1">
 
             <ImageView
                 android:id="@+id/ImageView"

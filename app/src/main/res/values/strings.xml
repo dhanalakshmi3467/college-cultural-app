@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">college-app real</string>
+    <string name="app_name">college-cultrual-app</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -13,45 +13,36 @@
         <item>Contact us</item>
     </string-array>
 
-    <!--   <string name="title_activity_events">EventsActivity</string>
+    <string name="title_activity_events">EventsActivity</string>
 
-    <string name="title_activity_main2">Events</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_My_events">Events Types</string>
+    <!--   <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="large_text">
 
     </string>-->
     <string name="title_activity_maps">Map</string>
 
-  <!--  <string name="registration">Registration</string>
-    <string name="login_btn">login</string>
-    <string name="register">register</string>
-    <string name="email">email</string>
-    <string name="User_name">username</string>
-    <string name="password">password</string>
-
-    <string name="reg_no">Register number</string>
-    -->
 
     <string name="no_reg_event_found"> No Registered event found.</string>
     <string name="no_events">no data is loaded connected to the surver</string>
-<!--
+    <!--
 //contacts string-->
     <string-array name="contact">
-        <item>Suresh.G              : 9790498687</item>
-        <item>Sheik Abdul Azeem.A   : 9952358777</item>
+        <item>kavya.G              : 9790498687</item>
+        <item>Syeda khadrunisa  : 9952358777</item>
         <item>Kishore Kumar.B       : 9500898882</item>
         <item>Reventh.D             : 9677544872</item>
         <item>Soorya.R.T            : 8220311165</item>
-        <item>Vimalraj.S            : 9600661998</item>
-        <item>Rajkumar.K            : 7092205315</item>
-        <item>Deepan.P              : 9489687612</item>
+        <item>navya.S            : 9600661998</item>
+        <item>manasa.K            : 7092205315</item>
+        <item>sandhya.P              : 9489687612</item>
     </string-array>
 
     <string-array name="acccontact">
-        <item>Vinoth Kumar          : 7598123558</item>
-        <item>Agathiswaren          : 8903968358</item>
+        <item>dhanalakshmi R     : 8050860317</item>
+        <item>priyanka R          : 9972132025</item>
     </string-array>
 
-
+  <string name="The_College_Fest">The College Fest</string>
 </resources>

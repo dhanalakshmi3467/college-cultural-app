@@ -1,109 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorlayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="60dp"
-            >
+            android:orientation="vertical"
+            android:paddingTop="60dp">
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_margin="10dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
                         android:id="@+id/org"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/side_nav_bar">
+                        android:background="@drawable/side_nav_bar"
+                        android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/orgtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
-                            android:textSize="25dp"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Organizing committee"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="#ffffff"
-                            android:id="@+id/orgtitle" />
+                            android:textSize="25dp" />
                     </LinearLayout>
+
                     <ListView
-                        android:layout_margin="0dp"
-                        android:scrollbars="none"
                         android:id="@+id/contactname"
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
                         android:layout_below="@+id/org"
-                        android:paddingLeft="@dimen/event_description_padding"
-                        android:paddingRight="@dimen/event_description_padding"
-                        android:paddingTop="@dimen/event_description_padding"
+                        android:layout_margin="0dp"
                         android:divider="@android:color/transparent"
                         android:dividerHeight="5dp"
                         android:entries="@array/contact"
                         android:foregroundGravity="left"
                         android:listSelector="@android:color/transparent"
-                        />
+                        android:paddingLeft="@dimen/event_description_padding"
+                        android:paddingTop="@dimen/event_description_padding"
+                        android:paddingRight="@dimen/event_description_padding"
+                        android:scrollbars="none" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
-
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_margin="10dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <LinearLayout
                         android:id="@+id/acc"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:background="@drawable/side_nav_bar">
+                        android:background="@drawable/side_nav_bar"
+                        android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/acctitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
-                            android:textSize="25dp"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="For Accommodation"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="#ffffff"
-                            android:id="@+id/acctitle" />
+                            android:textSize="25dp" />
                     </LinearLayout>
+
                     <ListView
-                        android:layout_margin="0dp"
-                        android:scrollbars="none"
                         android:id="@+id/accname"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_below="@+id/acc"
-                        android:paddingLeft="@dimen/event_description_padding"
-                        android:paddingRight="@dimen/event_description_padding"
-                        android:paddingTop="@dimen/event_description_padding"
+                        android:layout_margin="0dp"
                         android:divider="@android:color/transparent"
                         android:dividerHeight="5dp"
                         android:entries="@array/acccontact"
                         android:foregroundGravity="left"
                         android:listSelector="@android:color/transparent"
-                        />
+                        android:paddingLeft="@dimen/event_description_padding"
+                        android:paddingTop="@dimen/event_description_padding"
+                        android:paddingRight="@dimen/event_description_padding"
+                        android:scrollbars="none" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

@@ -6,152 +6,165 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="210dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        app:cardCornerRadius="12dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/home_gradient_color3">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/eventimage"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="210dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="308dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/home_gradient_color3">
+
+                    <ImageView
+                        android:id="@+id/eventimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:src="@drawable/eventa" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/eventDetailId"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:src="@drawable/eventa" />
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:gravity="center"
+                android:text="Event Id:"
+                android:textColor="@color/DarkRed"
+                android:textSize="24sp"
+                android:visibility="gone" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/eventDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:text="Mono Acting"
+                android:textAlignment="center"
+                android:textColor="@color/Gray"
+                android:textSize="24sp" />
 
-    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/college"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:text="National  Degree College"
+                android:textAlignment="center"
+                android:textColor="@color/DarkGreen"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/eventDetailId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/boogaloo"
-        android:gravity="center"
-        android:text="Event Id:"
-        android:textColor="@color/DarkRed"
-        android:textSize="24sp"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/eventDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/boogaloo"
+                android:text="Event Date and Time"
+                android:textAlignment="center"
+                android:textColor="@color/Gray"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/eventDetailTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/boogaloo"
-        android:text="Mono Acting"
-        android:textAlignment="center"
-        android:textColor="@color/Gray"
-        android:textSize="24sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/college"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/boogaloo"
-        android:text="National  Degree College"
-        android:textAlignment="center"
-        android:textColor="@color/DarkGreen"
-        android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/eventDetailDate"
+                    android:layout_width="218dp"
+                    android:layout_height="47dp"
+                    android:fontFamily="@font/boogaloo"
+                    android:text="Sat Sept 15 2020"
+                    android:textAlignment="center"
+                    android:textColor="@color/OrangeRed"
+                    android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/eventDateTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/boogaloo"
-        android:text="Event Date and Time"
-        android:textAlignment="center"
-        android:textColor="@color/Gray"
-        android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/eventDetailTime"
+                    android:layout_width="195dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/boogaloo"
+                    android:text="Time"
+                    android:textAlignment="center"
+                    android:textColor="@color/OrangeRed"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/eventDetailDate"
-            android:layout_width="218dp"
-            android:layout_height="47dp"
-            android:fontFamily="@font/boogaloo"
-            android:text="Sat Sept 15 2020"
-            android:textAlignment="center"
-            android:textColor="@color/OrangeRed"
-            android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="218dp"
+                    android:layout_height="47dp"
+                    android:fontFamily="@font/boogaloo"
+                    android:text="Price"
+                    android:textAlignment="center"
+                    android:textColor="@color/Gray"
+                    android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/eventDetailTime"
-            android:layout_width="195dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/boogaloo"
-            android:text="Time"
-            android:textAlignment="center"
-            android:textColor="@color/OrangeRed"
-            android:textSize="24sp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/eventDetailPrice"
+                    android:layout_width="195dp"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/boogaloo"
+                    android:text="Amount"
+                    android:textAlignment="center"
+                    android:textColor="@color/Gray"
+                    android:textSize="24sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="218dp"
-            android:layout_height="47dp"
-            android:fontFamily="@font/boogaloo"
-            android:text="Price"
-            android:textAlignment="center"
-            android:textColor="@color/Gray"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/eventDetailPrice"
-            android:layout_width="195dp"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/boogaloo"
-            android:text="Amount"
-            android:textAlignment="center"
-            android:textColor="@color/Gray"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/eventDetailDescription"
-        android:layout_width="match_parent"
-        android:layout_height="123dp"
-        android:fontFamily="@font/boogaloo"
-        android:text="Come...immersive yourself into the Magical Fete with \n the state of the art perfomances and celebrations ehjfrwe\n
+            <TextView
+                android:id="@+id/eventDetailDescription"
+                android:layout_width="match_parent"
+                android:layout_height="123dp"
+                android:fontFamily="@font/boogaloo"
+                android:text="Come...immersive yourself into the Magical Fete with \n the state of the art perfomances and celebrations ehjfrwe\n
 rwjhytruje rerutg brrhtr ru4t 4ut45 iu45t 4 45ui4t i \n 45ut 45 tu5t458 tui4t ui45thk45ht"
-        android:textAlignment="center"
-        android:textColor="@color/Black"
-        android:textSize="20dp" />
+                android:textAlignment="center"
+                android:textColor="@color/Black"
+                android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/registerEvent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/login_btn"
-        android:onClick="FreeEntry"
-        android:text="Free Entry" />
+            <Button
+                android:id="@+id/registerEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_btn"
+                android:onClick="FreeEntry"
+                android:text="Free Entry" />
 
-    <TextView
-        android:id="@+id/eventDetailImageUrl"
-        android:layout_width="392dp"
-        android:layout_height="8dp"
-        android:text=""
-        android:textColor="@color/Orange"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:visibility="gone" />
+            <TextView
+                android:id="@+id/eventDetailImageUrl"
+                android:layout_width="392dp"
+                android:layout_height="8dp"
+                android:text=""
+                android:textColor="@color/Orange"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <!-- <Button
          android:id="@+id/registerEvent1"
@@ -166,172 +179,4 @@ rwjhytruje rerutg brrhtr ru4t 4ut45 iu45t 4 45ui4t i \n 45ut 45 tu5t458 tui4t ui
 </LinearLayout>
 
 
-    <!--
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/Moccasin"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="343dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:background="@color/Gold"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="238dp"
-                    android:layout_height="193dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="45dp"
-                    android:src="@drawable/eye" />
-
-                <TextView
-                    android:id="@+id/eventDetailId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="Wiliam Snoe"
-                    android:textColorHint="@color/Bisque"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/eventDetailTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="Wiliam Snoe"
-                    android:textColorHint="@color/Bisque"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/ic_description"
-                    />
-
-                <TextView
-                    android:id="@+id/eventDetailDescription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Wiliam@gmail.com"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_date_range" />
-
-                <TextView
-                    android:id="@+id/eventDetailDate"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="+266 225 225"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_access_time_black_24dp" />
-
-                <TextView
-                    android:id="@+id/eventDetailTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Add to group"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                android:paddingLeft="25dp">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/rupee" />
-
-                <TextView
-                    android:id="@+id/eventDetailPrice"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Show all comments"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/eventDetailImageUrl"
-            android:layout_width="392dp"
-            android:layout_height="8dp"
-            android:text=""
-            android:textColor="@color/Orange"
-            android:textSize="20dp"
-            android:textStyle="italic" />
-
-        <Button
-            android:id="@+id/registerEvent"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:background="#98FB98"
-            android:text="Register"
-            android:textColor="#000000" />
-
-    </LinearLayout>-->
 

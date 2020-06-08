@@ -1,51 +1,57 @@
 package com.example.today;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
-import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
-
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.today.Events.DisplayEventTypes;
+import com.example.today.MyEvents.DisplayMyEventsCollections;
+import com.example.today.activities.AboutUs;
+import com.example.today.activities.CampusNews;
+import com.example.today.activities.Login;
+import com.example.today.activities.Sponsors;
+import com.example.today.adapters.FeaturedAdapter;
+import com.example.today.adapters.MostViewedAdapter;
+import com.example.today.models.EventType;
+import com.example.today.models.FeaturedHelperClass;
 import com.example.today.models.LoginResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static com.example.today.backgroundWorker.Urls1.GET_DATA_URL;
+
+//import static com.example.today.backgroundWorker.Urls.GET_DATA_URL;
+
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    String rigntone;
-    NotificationManager notificationManager;
-    String uname;
+
+    ArrayList<FeaturedHelperClass> FeaturedData;
+    private RecyclerView featuredRecycler, mostViewedRecycler;
+    RecyclerView.Adapter adapter;
 
     long backPressedTime = 0;
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -54,19 +60,16 @@ public class Dashboard extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        featuredRecycler = findViewById(R.id.featured_recycle);
+        mostViewedRecycler = findViewById(R.id.most_viewed_recycler);
+        FeaturedData = new ArrayList<>();
+        featuredRecycler();
+        mostViewedRecycler();
         setSupportActionBar(toolbar);
-        //Notification process
-        //preference Notification
-        //preference Notification
-       /* SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Dashboard.this);
-        rigntone = sp.getString("ring1", "default ringtone");
-        uname = sp.getString("name1", "User");*/
-        //Dashboard.LoggedInUserInfo.getUuid();
 
-        //  Toast.makeText(Dashboard.this, "Logged in as : " + uname, Toast.LENGTH_SHORT).show();
-    /*    showNotification();*/
 
 
         Intent intent = getIntent();
@@ -78,8 +81,6 @@ public class Dashboard extends AppCompatActivity
                 e.printStackTrace();
             }
         }
-
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,9 +102,70 @@ public class Dashboard extends AppCompatActivity
 
     }
 
+    private void mostViewedRecycler() {
+        mostViewedRecycler.setHasFixedSize(true);
+        mostViewedRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<EventType.MostViewedHelperClass> mostViewedLocations = new ArrayList<>();
+        mostViewedLocations.add(new EventType.MostViewedHelperClass(R.drawable.laser, "Laser Tag","Test your skills in the real world with lasers and limited lives."));
+        mostViewedLocations.add(new EventType.MostViewedHelperClass(R.drawable.dance, "Inter Department Dance","The was perfect dance competitation and blend of dance as well as competation"));
+        mostViewedLocations.add(new EventType.MostViewedHelperClass(R.drawable.lan, "Lan Gaming","Prove Your worth against the best  oppostions as you face."));
+        mostViewedLocations.add(new EventType.MostViewedHelperClass(R.drawable.chainreaction, "ChainReaction","Watch all the events unfold in an exquistie game of dominos, falling in tandem."));
+        mostViewedLocations.add(new EventType.MostViewedHelperClass(R.drawable.golf, "Mini Golf","Put your way through fun filled holes of 3d designed coursers with elevated platforms."));
+
+        adapter = new MostViewedAdapter(mostViewedLocations);
+        mostViewedRecycler.setAdapter(adapter);
+    }
+
+    private void featuredRecycler() {
+
+        featuredRecycler.setHasFixedSize(true);
+        featuredRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, GET_DATA_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONArray array = new JSONArray(response);
+
+                            for (int i = 0; i < array.length(); i++) {
+
+                                JSONObject product = array.getJSONObject(i);
+
+                                FeaturedData.add(new FeaturedHelperClass(
+                                        product.getString("image"),
+                                        product.getString("title"),
+                                        product.getString("shortdesc")
+
+                                ));
+                            }
+
+                            FeaturedAdapter adapter = new FeaturedAdapter(Dashboard.this, FeaturedData);
+                            featuredRecycler.setAdapter(adapter);
+
+                           /* adapter = new FeaturedAdapter(product);
+                            featuredRecycler.setAdapter(adapter);*/
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
 
 
-    @Override
+                        Log.println(Log.ERROR, "putti", error.getMessage());
+                    }
+                });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+
+   /* @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -111,9 +173,20 @@ public class Dashboard extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        long t = System.currentTimeMillis();
+        if (t - backPressedTime > 2000) {    // 2 secs
+            backPressedTime = t;
+            //Toast.makeText(this, "Press one more time to exit", Toast.LENGTH_SHORT).show();
+            moveTaskToBack(true);
+        } else {    // this guy is serious
+            // clean up
+            moveTaskToBack(true);
+        }
     }
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -130,7 +203,7 @@ public class Dashboard extends AppCompatActivity
             i.putExtra("extra", 2);
             startActivity(i);
         } else if (id == R.id.nav_map) {
-            Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=12.948724, 77.573039"));
             startActivity(i);
         } else if (id == R.id.nav_view) {
             Intent i = new Intent(Dashboard.this, Login.class);
@@ -139,37 +212,39 @@ public class Dashboard extends AppCompatActivity
             Intent i = new Intent(Dashboard.this, DisplayMyEventsCollections.class);
             startActivity(i);
         }
-
+//12.9487,77.5729
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    public void myevent(View view) {
+        Intent intent = new Intent(this, DisplayMyEventsCollections.class);
+        startActivity(intent);
+    }
 
-
-
-    public void Events(View view) {
+    public void AllEvents(View view) {
         Intent intent = new Intent(this, DisplayEventTypes.class);
         startActivity(intent);
     }
 
-    public void MyEvents(View view) {
-        Intent intent = new Intent(this, DisplayMyEventsCollections.class);
+    public void Events1(View view) {
+        Intent intent = new Intent(this, DisplayEventTypes.class);
         startActivity(intent);
     }
 
 
     public void Sponsers(View view) {
-        Intent intent = new Intent(this, SplashScreen.class);
+        Intent intent = new Intent(this, Sponsors.class);
         startActivity(intent);
     }
 
     public void Map(View view) {
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=24.517606,73.751581"));
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?saddr=12.948724, 77.573039"));
         startActivity(intent);
     }
 
-    public void AboutUs(View view) {
+    public void CantactUs(View view) {
         Intent intent = new Intent(this, AboutUs.class);
         startActivity(intent);
     }
@@ -178,8 +253,13 @@ public class Dashboard extends AppCompatActivity
         Intent intent = new Intent(this, CampusNews.class);
         startActivity(intent);
     }
-}
 
+    public void EventsShow(View view) {
+        Intent intent = new Intent(this, DisplayEventTypes.class);
+        startActivity(intent);
+    }
+
+}
 /*
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     GridView grid;

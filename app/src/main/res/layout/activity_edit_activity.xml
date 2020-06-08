@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".EditActivity">
+    tools:context=".Events.EditActivity">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/Blue"
         android:text="Enter Details"
         android:textSize="28sp" />
 
     <TextView
         android:id="@+id/edtId"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Title"

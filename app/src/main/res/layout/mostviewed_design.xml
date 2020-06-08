@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ms_image"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:background="@drawable/splashh"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/ms_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Red"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/ms_image"
+            android:fontFamily="@font/copse"
+            android:text="Dhanalakshmi S" />
+
+        <Button
+            android:id="@+id/ms_button"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@id/ms_title"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="16dp"
+            android:onClick="EventsShow"
+            android:layout_toRightOf="@id/ms_image"
+            android:background="@color/PaleTurquoise"
+            android:text="Register"
+            android:textColor="@color/contentTextColor"
+            android:textSize="12dp">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/ms_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ms_button"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/ms_image"
+            android:fontFamily="@font/copse"
+            android:textColor="@color/DarkBlue"
+            android:padding="10dp"
+            android:text="hello all welcome to the fest"
+            android:textSize="18dp">
+
+
+        </TextView>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
